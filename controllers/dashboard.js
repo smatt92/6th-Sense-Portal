@@ -7,6 +7,7 @@ $scope.companyNumbers = 0;
 $scope.ecuUnits=0;
 $scope.deviceUnit = 0;
 
+//Get ECU Count
 var ecuCount = 0;
  var autho = localStorage.getItem("sixthsense.token");
     var auth = "Bearer "+autho; 
