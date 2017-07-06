@@ -1,3 +1,5 @@
+//App.js
+
 var app = angular.module("SixSense", ['ngRoute','ui.select', 'ngSanitize','mgo-angular-wizard', 'chart.js','angularUtils.directives.dirPagination']);
 var token = localStorage.getItem("sixthsense.token");
 
@@ -82,6 +84,3 @@ app.config(function($routeProvider) {
         controller:"CompanyAdminFeatures "
      });
 });
-
-
-
