@@ -1,0 +1,42 @@
+<div class="panel">
+   <div class="panel-heading">
+    
+      <strong>ECU Units</strong>
+
+      <input type="text" placeholder="Search" class="pull-right" ng-model=search></input>
+      <br><br>
+      <p>Items per page</p>
+<select ng-model="pageSize">
+  <option value=5>5</option>
+  <option value=10>10</option>
+  <option value=15>15</option>
+
+</select>
+   </div>
+   <div class="panel-body">
+     <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+        <tr class="bold">
+        <!-- <td style="width:10%">ID</td> -->
+         <td style="width:10%">Serial No.<i class="fa fa-caret-down pull-right" ng-click=sort('serial_no')></i></td>
+         <td style="width:10%">Version No<i class="fa fa-caret-down pull-right" ng-click=sort('version_no')></i></td>
+         <td style="width:10%">ECU Type<i class="fa fa-caret-down pull-right" ng-click=sort('ecu_type.name')></i></td>
+         <td style="width:10%">Manufactured on</td>
+         <td style="width:10%">Vehicle Assigned<i class="fa fa-caret-down pull-right" ng-click=sort('vehicle.vehicle_no')></i></td>
+
+        </tr>
+        <tr dir-paginate="v in ecuUnits | filter:search | orderBy: 'done' :reverse | itemsPerPage:pageSize ">
+        <!-- <td style="width:10%">{{v._id}}</td> -->
+         <td style="width:10%">{{v.serial_no}}</td>
+         <td style="width:10%">{{v.version_no}}</td>
+         <td style="width:10%">{{v.ecu_type.name}}</td>
+         <td style="width:20%">{{v.manufactured_on |date:format:"dd:M:YYYY"}}</td>
+         <td style="width:10%"><span ng-show="v.vehicle==null"><button class="btn btn-danger">Not Assigned</button></span>{{v.vehicle.vehicle_no}}</td>
+        </tr>
+     </table>
+          <dir-pagination-controls 
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" > 
+    </dir-pagination-controls>
+   </div>
+ </div>

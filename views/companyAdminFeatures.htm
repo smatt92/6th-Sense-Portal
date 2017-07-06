@@ -1,0 +1,317 @@
+<div>
+<div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>CAS</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox" ng-model="casChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Alarm Threshold</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control"  ng-disabled="!casChecked" ng-model="alarmTh" name="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Brake Threshold</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!casChecked" ng-model="brakeTh" name="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Brake Speed</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!casChecked" ng-model="brakeSpeed" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>SLEEP ALERT</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox" ng-model="sleepAlertChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Switch Interval</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!sleepAlertChecked" ng-model="SwitchInterval" name="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Switch On</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!sleepAlertChecked" ng-model="switchOn" name="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Switch Off</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!sleepAlertChecked" ng-model="switchOff" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>TPMS</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-model="tpmsChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Cut</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control chosen" ng-disabled="!tpmsChecked" ng-model="cut">
+                                            <option>YES</option>
+                                            <option>NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Interval</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!tpmsChecked" ng-model="tpmsinterval" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>ACC ALERT</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox" ng-model="accAlertChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">ERC1</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!accAlertChecked" ng-model="erc1" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>ALC CHECK</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-model="alcCheckChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Interval</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!alcCheckChecked" ng-model="accInterval">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Threshold</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!alcCheckChecked" ng-model="accTh" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>HONK CHECK</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox" ng-model="honkChkChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Threshold 1</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!honkChkChecked" ng-model="honkChkTh1" name="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Threshold 2</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!honkChkChecked" ng-model="honkChkTh2" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>OBD</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox" ng-model="obdChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Interval</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!obdChecked" ng-model="obdInterval" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>FUEL SENSOR</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox" ng-model="fuelChecked"  checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>EXTRA BATT</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox" ng-model="extBattChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>CRUISE</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox" ng-model="cruiseChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Speed</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-disabled="!cruiseChecked" ng-model="speed" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>ACC CUTOFF BRAKE</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"   ng-model="accCutOffChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>ACC CUTOFF ERROR</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-model="accCutOfferrorChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                        </div>
+                    </div>
+
+   </div>                 

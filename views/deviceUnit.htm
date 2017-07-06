@@ -1,0 +1,221 @@
+<div class="panel">
+   <div class="panel-heading">
+     <button class="btn btn-default btn-xs pull-right"  data-toggle="modal" data-target="#deviceUnit">Create</button>
+     <br><br>
+     <input type="text" placeholder="Search" class="pull-right" ng-model=search></input>
+      <strong>Mobile Units</strong>
+      <p>Items per page</p>
+<select ng-model="pageSize">
+  <option value=5>5</option>
+  <option value=10>10</option>
+  <option value=15>15</option>
+
+</select>
+   </div>
+   <div class="panel-body">
+     <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+        <tr class="bold">
+        <!-- <td style="width:10%">ID</td> -->
+             <td style="width:10%">Serial No.<i class="fa fa-caret-down pull-right" ng-click=sort('serial_no')></i></td>
+             <td style="width:10%">Version No<i class="fa fa-caret-down pull-right" ng-click=sort('version_no')></i></td>
+             <td style="width:10%">SIM No<i class="fa fa-caret-down pull-right" ng-click=sort('sim_no')></i></td>
+             <td style="width:10%">IMEI No.<i class="fa fa-caret-down pull-right" ng-click=sort('imei_no')></i></td>
+             <td style="width:10%">SIM Carrier<i class="fa fa-caret-down pull-right" ng-click=sort('sim_carrier')></i></td>
+             <td style="width:10%">Android Version<i class="fa fa-caret-down pull-right" ng-click=sort('android_version')></i></td>
+             <td style="width:10%">Edit</td>
+             <td style="width:10%">Delete</td>
+        </tr>
+        <tr dir-paginate="v in deviceUnits | filter:search | orderBy: 'done' :reverse | itemsPerPage:pageSize ">
+        <!-- <td style="width:10%">{{v._id}}</td> -->
+            <td style="width:10%">{{v.serial_no}}</td>
+            <td style="width:10%">{{v.version_no}}</td>
+            <td style="width:10%">{{v.sim_no}}</td>
+            <td style="width:10%">{{v.imei_no}}</td>
+            <td style="width:20%">{{v.sim_carrier}}</td>
+            <td style="width:20%">{{v.android_version}}</td>
+            <td><button class="btn btn-success btn-outline" ng-click="AddUpdateDetails(v._id)"  data-toggle="modal" data-target="#updateDeviceUnit">Edit</button></td>
+            <td><button class="btn btn-danger"  data-toggle="modal" data-target="#confirm" ng-click="setDeleteElementId(v._id);" >X</button></td>
+
+        </tr>
+     </table>
+     <dir-pagination-controls 
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" > 
+    </dir-pagination-controls>
+   </div>
+ </div>
+
+
+
+
+
+<div id="deviceUnit" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Create Device Unit</h4>
+     </div>
+     <div class="modal-body">
+             <div class="alert alert-danger alert-dismissable" ng-show="error">
+               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+               <strong>Note </strong> {{errorMsg}}
+               <ul>
+                   <li ng-repeat='x in errorLists'>{{x}}</li>
+               </ul>
+             </div>
+          <form name="deviceUnitForm">
+            <div class="form-group">
+            <label>Serial No</label><span class="ast">*</span>
+            <input type="text" class="form-control" name="serial" ng-model="serialNo" placeholder="" required>
+             
+<span class="Clienterror" ng-show=" deviceUnitForm.serial.$invalid && clicked">Serail Number is required.</span>
+   
+            </div>
+
+
+            <div class="form-group">
+            <label>Version No</label><span class="ast">*</span>
+            <input type="text" name="vrNo" class="form-control" ng-model="VrNo" placeholder="" required>
+             
+<span class="Clienterror" ng-show="deviceUnitForm.vrNo.$invalid && clicked">Version Number is required.</span>
+   
+            </div>
+
+            <div class="form-group">
+            <label>SIM No</label><span class="ast">*</span>
+            <input type="text" class="form-control" name="sim" ng-model="SimNo" placeholder=""  required>
+             
+<span class="Clienterror" ng-show=" deviceUnitForm.sim.$invalid && clicked">SIM Number is required.</span>
+   
+            </div>
+
+            <div class="form-group">
+            <label>IMEI No.</label><span class="ast">*</span>
+            <input type="text" class="form-control" name="imei" ng-model="IMEINo" placeholder=""  required>
+             
+<span class="Clienterror" ng-show=" deviceUnitForm.imei.$invalid && clicked">IMEI Number is required.</span>
+   
+            </div>
+
+            <div class="form-group">
+              <label>SIM Carrier</label><span class="ast">*</span>
+              <select  class="form-control"  ng-model="sim" ng-options="x for x in SimCarrierOptions" >
+               <option value="">Select SIM Carrier</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Android Version</label><span class="ast">*</span>
+              <select  class="form-control" name="andVr"  ng-model="andVersion" ng-options="x for x in AndroidVersionOptions" >
+                <option value="">Select Android Version</option>
+              </select>
+              
+<span class="Clienterror" ng-show=" deviceUnitForm.andVr.$invalid && clicked">Android Version is required.</span>
+   
+            </div>
+
+     <div class="modal-footer">
+      <button type="button" class="btn btn-danger"   ng-click="deviceCreate('deviceUnitForm')"   >Save</button>
+       <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
+     </div>
+          </form>
+   </div>
+
+ </div>
+</div>
+
+
+</div>
+
+<!--Update Device Unit -->
+
+
+
+<div id="updateDeviceUnit" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Update Device Unit</h4>
+     </div>
+     <div class="modal-body">
+         <div class="alert alert-danger alert-dismissable" ng-show="error">
+           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+         </div>
+
+        <!--<div class="form-group">
+            <label>ID</label>
+            <input type="text" class="form-control" ng-model="EditId" placeholder="" disabled>
+            </div>-->
+            <div class="form-group">
+            <label>Serial No</label>
+            <input type="text" class="form-control" ng-model="EditserialNo" placeholder="">
+            </div>
+
+
+
+            <div class="form-group">
+            <label>Version No</label>
+            <input type="text" class="form-control" ng-model="EditVrNo" placeholder="">
+            </div>
+
+            <div class="form-group">
+            <label>SIM No</label>
+            <input type="text" class="form-control" ng-model="EditSimNo" placeholder="">
+            </div>
+
+            <div class="form-group">
+            <label>IMEI No.</label>
+            <input type="text" class="form-control" ng-model="EditIMEINo" placeholder="">
+            </div>
+
+            <div class="form-group">
+              <label>SIM Carrier</label>
+              <select  class="form-control"  ng-model="Editsim" >
+               <option value="Airtel"   >AIRTEL</option>
+               <option value="Bsel"     >BSNL</option>
+               <option value="Vodafone"  >VODAFONE</option>
+               <option value="Idea"      >IDEA</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Android Version</label>
+              <select  class="form-control"  ng-model="EditandVersion" >
+               <option value="LOLLIPOP5.0.0">LOLLIPOP 5.0.0</option>
+               <option value="LOLLIPOP5.1.1">LOLLIPOP 5.1.1</option>
+               <option value="MARSHMALLOW6.0.1">MARSHMALLOW 6.0.1</option>
+              </select>
+            </div>
+
+     <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="UpdateDevice(EditId)"  data-dismiss="modal" >Save</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+   </div>
+
+ </div>
+</div>
+
+
+</div>
+ <div class="modal fade" id="confirm" role="dialog" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger"   data-dismiss="modal" ng-click="deleteDeviceUnit(DeleteElementId)">Delete</button>
+      </div>
+    </div>
+  </div>
+ </div>

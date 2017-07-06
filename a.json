@@ -1,0 +1,76 @@
+{
+    "name": "Sajan Khandelwal",
+    "address": "KL5-30/6\nSector 2",
+    "fleet_size": "60",
+    "phone_no": "022-27422262",
+    "pan_no": "85239674",
+    "director_name": "sajan",
+    "director_phone_no": "08655847403",
+    "feature": {
+        "cas": {
+            "alarm_th": "60",
+            "brake_th": "60",
+            "brake_speed": "60",
+            "enabled": "YES"
+        },
+        "sleep_alert": {
+            "switch_interval": "60",
+            "switch_on": "60",
+            "switch_off": "60",
+            "enabled": "YES"
+        },
+        "tpms": {
+            "interval": "60",
+            "cut": "YES",
+            "enabled": "YES",
+            "up_thershold":50,
+			"down_thershold":30
+        },
+        "acc_alert": {
+            "erc_1": "9867640519",
+            "enabled": "YES"
+        },
+        "alc_check": {
+            "interval": "60",
+            "threshold": 60,
+            "enabled": "NO"
+        },
+        "honk_check": {
+            "threshold_1": 60,
+            "threshold_2": 60,
+            "enabled": "YES"
+        },
+        "obd": {
+            "interval": "60",
+            "enabled": "YES"
+        },
+        "fuel_sensor": {
+            "enabled": "YES"
+        },
+        "extra_batt": {
+            "enabled": "YES"
+        },
+        "cruise": {
+            "speed": "60",
+            "enabled": "YES"
+        },
+        "acc_cutoff_brake": {
+            "enabled": "YES"
+        },
+        "acc_cutoff_error": {
+            "enabled": "YES"
+        }
+    },
+    "devices": [
+        "593926786e7a9b0b380beb17"
+    ],
+    "ecus": [
+        "5939254b6e7a9b0b380beb16"
+    ],
+    "admins": [
+        {
+            "name": "Sajan Khandelwal",
+            "username": "sajankhandelwal94@gmail.com"
+        }
+    ]
+}

@@ -1,0 +1,470 @@
+<div id="readPopup" class="main-content checkbo" style="min-height: 60vh">
+    <form id="commentForm" class="form-horizontal" role="form">
+        <div class="box-tab justified" id="rootwizard">
+            <ul class="nav nav-tabs" style="background-color: #fff; ">
+                <li class="active"  ><a data-target="#tab1" data-toggle="tab" id="atab1">1. Company details</a>
+                </li>
+                <li ><a data-target="#tab2" data-toggle="tab" id="atab2" >2. Add Admin</a>
+                </li>
+                <li ><a data-target="#tab3" data-toggle="tab"id="atab3" >3. Add ECU</a>
+                </li>
+                <li ><a data-target="#tab4" data-toggle="tab"id="atab4" >4. Add Device</a>
+                </li>
+                <li ><a data-target="#tab5" data-toggle="tab"id="atab5" >5. Add Features</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    <div>
+                        <br><br>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label">Name</label>
+                                    <div class="col-sm-7">
+                                      <input type="text" ng-disabled=true class="form-control" ng-model="companyName" id="" name="">
+                                    </div>
+                                </div><br>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label">Address</label>
+                                    <div class="col-sm-7">
+                                        <textarea class="form-control" ng-disabled=true ng-model="companyAdd" rows="3"></textarea>
+                                    </div>
+                                </div><br>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label">Fleet Size</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" ng-disabled=true class="form-control" ng-model="fleetSize" id="" name="">
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label">Phone Number</label>
+                                    <div class="col-sm-7 form-inline" >
+                                        <input type="text" ng-disabled=true class="form-control col-sm-9" ng-model="phoneNumber" id="" name="">
+                                    </div>
+                                </div><br>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label">Pan Number</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" ng-disabled=true class="form-control" ng-model="panNo" id="" name="">
+                                    </div>
+                                </div><br>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label">Director Name</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" ng-disabled=true class="form-control" ng-model="DirectorName" id="" name="">
+                                    </div>
+                                </div><br>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label">Director Phone Number</label>
+                                    <div class="col-sm-7">
+                                      <input type="text" ng-disabled=true class="form-control" ng-model="DirectorMoNo" id="" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><br>
+                        <button type="button" class="btn btn-primary button-next" ng-click="next1()" id="next1">Next</button>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab2"><br>
+                    <div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-4">
+                                <input type="text" ng-disabled=true class="form-control" ng-model="adminName" id="" name="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Email Address</label>
+                            <div class="col-sm-4">
+                                <input type="text" ng-disabled=true class="form-control" ng-model="adminEmail" id="" name="">
+                            </div>
+                        </div>
+                        <!--<div class="row">
+                          <div class="col-sm-5"></div>
+                          <div class="col-sm-4">
+                              <button type="button" class="btn btn-primary" ng-click="saveAdmin()">Save</button>
+                          </div>
+                          <div class="col-sm-3"></div>
+                        </div>-->
+                    </div>
+
+                    <div class="panel-body">
+                        <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email Address</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="admins in adminArr">
+                                    <td>{{admins.name}}</td>
+                                    <td>{{admins.username}}</td>
+                                   
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-primary button-next" ng-click="next2()" id="next2">Next</button>
+                    <button type="button" class="btn btn-default button-prev" ng-click="prev2()" id="prev2">Previous</button>
+                </div>
+
+                <div class="tab-pane" id="tab3">
+                    <label>Select ECU Type</label>
+                    <ui-select multiple ng-model="ecuTypes.a" ng-disabled=true>
+                        <ui-select-match>
+                            {{$item.serial_no}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in (EcuitemArray[0] | filter: $select.search) track by item.serial_no">
+                            <span ng-bind="item.version_no"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                    <button type="button" class="btn btn-primary button-next" ng-click="next3()">Next</button>
+                    <button type="button" class="btn btn-default button-prev" ng-click="prev3()" id="prev3">Previous</button>
+                </div>
+
+                <div class="tab-pane" id="tab4">
+                    <label>Select Device Unit</label>
+                    <ui-select multiple ng-model="deviceUnit.a" ng-disabled=true>
+                        <ui-select-match>
+                            {{$item.serial_no}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in (DeviceArray[0] | filter: $select.search) track by item.serial_no">
+                            <span ng-bind="item.serial_no"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                    <button type="button" class="btn btn-primary button-next" ng-click="next4()">Next</button>
+                    <button type="button" class="btn btn-default button-prev" ng-click="prev4()" id="prev4">Previous</button>
+                </div>
+                <div class="tab-pane" id="tab5">
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>CAS</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true ng-model="casChecked" ng-disabled=true checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Alarm Threshold</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control"  ng-disabled="!casChecked" ng-model="alarmTh" name="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Brake Threshold</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!casChecked" ng-model="brakeTh" name="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Brake Speed</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!casChecked" ng-model="brakeSpeed" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>SLEEP ALERT</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true ng-model="sleepAlertChecked" ng-disabled=true checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Switch Interval</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!sleepAlertChecked" ng-model="SwitchInterval" name="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Switch On</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!sleepAlertChecked" ng-model="switchOn" name="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Switch Off</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!sleepAlertChecked" ng-model="switchOff" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>TPMS</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true  ng-model="tpmsChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Cut</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control chosen" ng-disabled="!tpmsChecked" ng-model="cut">
+                                            <option>YES</option>
+                                            <option>NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Interval</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!tpmsChecked" ng-model="tpmsinterval" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>ACC ALERT</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true ng-model="accAlertChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">ERC1</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!accAlertChecked" ng-model="erc1" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>ALC CHECK</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true  ng-model="alcCheckChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Interval</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!alcCheckChecked" ng-model="accInterval">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Threshold</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!alcCheckChecked" ng-model="accTh" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>HONK CHECK</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true ng-model="honkChkChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Threshold 1</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!honkChkChecked" ng-model="honkChkTh1" name="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Threshold 2</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!honkChkChecked" ng-model="honkChkTh2" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>OBD</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true ng-model="obdChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Interval</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!obdChecked" ng-model="obdInterval" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>FUEL SENSOR</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true ng-model="fuelChecked"  checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>EXTRA BATT</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true ng-model="extBattChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>CRUISE</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true ng-model="cruiseChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Speed</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" ng-disabled=true class="form-control" ng-disabled="!cruiseChecked" ng-model="speed" name="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>ACC CUTOFF BRAKE</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true   ng-model="accCutOffChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                        </div>
+                    </div><br><hr><br>
+
+                    <div class="container-fluid cardFeatures">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <h4>ACC CUTOFF ERROR</h4>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="switch switch-sm switchFeatures">
+                                        <input type="checkbox"  ng-disabled=true  ng-model="accCutOfferrorChecked" checked>
+                                        <span><i class="handle"></i></span>
+                                    </label>
+                                </div>
+                            </div><br><br>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-default button-prev" ng-click="prev5()" id="prev5">Previous</button>
+                </div>
+                <div class="wizard-pager">
+                    <div class="pull-right">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

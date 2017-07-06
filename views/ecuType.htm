@@ -1,0 +1,190 @@
+<div class="panel">
+   <div class="panel-heading">
+     <button class="btn btn-default btn-xs pull-right"  data-toggle="modal" data-target="#addEcuType">Create</button>
+      <br><br>
+     <input type="text" placeholder="Search" class="pull-right" ng-model=search></input>
+     <strong>System Types</strong>
+     <br>
+      <br>
+<p>Items per page</p>
+<select ng-model="pageSize">
+  <option value=5>5</option>
+  <option value=10>10</option>
+  <option value=15>15</option>
+
+</select>
+   </div> 
+
+
+   <div class="panel-body">
+     <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+       <tr class="bold">
+         <!-- <td style="width:10%">ID</td> -->
+         <td style="width:10%"  >Name<i class="fa fa-caret-down pull-right" ng-click=sort('name')></i></td>
+         <td style="width:10%">Analog Switch<i class="fa fa-caret-down pull-right" ng-click=sort('analog_switch')></i></td>
+         <td style="width:10%">Valve 2<i class="fa fa-caret-down pull-right" ng-click=sort('cylinder_2')></i></td>
+         <td style="width:10%">CAN<i class="fa fa-caret-down pull-right" ng-click=sort('can')></i></td>
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+       </tr>
+      <tr dir-paginate="e in ecuTypes | filter:search | orderBy: 'done' :reverse | itemsPerPage:pageSize" >
+        <!-- <td style="width:10%">{{e._id}}</td> -->
+         <td style="width:10%">{{e.name}}</td>
+         <td style="width:10%">{{e.analog_switch}}</td>
+         <td style="width:10%">{{e.cylinder_2}}</td>
+         <td style="width:10%">{{e.can}}</td>
+         <td><button data-toggle="modal" data-target="#editEcuType" ng-click="AddDataToEdit(e._id)" class="btn btn-success btn-outline">Edit</button></td>
+         <td><button class="btn btn-danger" data-toggle="modal" ng-click="setDeleteElementId(e._id)" data-target="#confirm" >X</button></td>
+       </tr>
+     </table>
+          <dir-pagination-controls
+       max-size="1"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
+   </div>
+ </div>
+ <div class="modal fade" id="confirm" role="dialog" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger"   data-dismiss="modal" ng-click="deleteEcuType(DeleteElementId)">Delete</button>
+      </div>
+    </div>
+  </div>
+ </div>
+ <div id="addEcuType" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Create ECU Type</h4>
+     </div>
+        <div class="modal-body">
+            <div class="alert alert-danger alert-dismissable" ng-show="error">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Note </strong> {{errorMsg}}
+              <ul>
+                  <li ng-repeat='x in errorLists'>{{x}}</li>
+              </ul>
+            </div>
+          
+            <div class="form-group">
+                <label>Name</label><span class="ast">*</span>
+                <input type="text" class="form-control col-sm-10" ng-model="ecuTypeName"   required>
+                <span style="color:red" ng-show="ECUnameErr">Name is required</span>
+
+            </div>
+            <br/><br/>
+            <div class="form-group">
+                <label>CAN</label><span class="ast">*</span>
+                <select class="form-control" ng-model="ecuTypeCan" ng-options="x for x in ecuOptions" placeholder="Can" >
+                <option value="">Please Select</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Valve 2</label><span class="ast">*</span>
+                <select class="form-control" ng-model="ecuTypeCylinder" ng-options="x for x in ecuOptions" placeholder="Cylinder">
+                    <option value="">Please Select</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Analog Switch</label><span class="ast">*</span>
+                <select class="form-control" ng-model="ecuTypeAnalog" ng-options="x for x in ecuOptions" placeholder="Analog Switch">
+                   <option value="">Please Select</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="addEcuTypeSubmit"  ng-click="addEcuType()"   >Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+
+
+
+ </div>
+</div>
+</div>
+
+
+
+<div id="editEcuType" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Edit ECU Type</h4>
+     </div>
+     <div class="modal-body">
+         <!--<div class="form-group">
+       <input type="text" class="form-control" ng-model="EditecuId" placeholder="id" ng-readonly="true">
+       </div>-->
+       <div class="form-group">
+         <label>Name</label>
+       <input type="text" class="form-control" ng-model="EditecuTypeName" placeholder="Name">
+       </div>
+            <div class="form-group">
+               <label>CAN</label>
+                <select class="form-control" ng-model="EditecuTypeCan" placeholder="Can">
+                    <option>YES</option>
+                    <option>NO</option>
+                </select>
+            </div>
+       <div class="form-group">
+         <label>Cylinder</label>
+                <select class="form-control" ng-model="EditecuTypeCylinder" placeholder="Cylinder">
+                    <option>YES</option>
+                    <option>NO</option>
+                </select>
+            </div>
+        <div class="form-group">
+          <label>Analog Switch</label>
+                <select class="form-control" ng-model="EditecuTypeAnalog" placeholder="Analog Switch">
+                    <option>YES</option>
+                    <option>NO</option>
+                </select>
+            </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="EditData()"  data-dismiss="modal" >Save</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+   </div>
+
+ </div>
+</div>
+
+
+</div>
+
+
+
+<div id="confirm" class="modal fade" role="dialog">
+<div class="modal-dialog" >
+<div class="modal-content">
+  
+ <div class="modal-header">
+   <button class="close" data-dismiss="modal">&times;</button>
+   </div>
+    <div class="modal-body">
+      <img src="">
+      <h3>Are you sure</h3>
+
+    </div>
+<div class="modal-footer">
+  <button class="btn btn-success" data-dismiss="modal">Cancel</button>
+  <button class="btn btn-danger" ng-click="deleteEcuType(e._id)">Delete</button>
+
+</div>
+
+</div></div>
+ </div>
+

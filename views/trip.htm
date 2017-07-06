@@ -1,0 +1,281 @@
+    <div class="row">
+        <div class="col col-md-4">
+            <h4>Trip Dashboard <span>{{TripDetails.label}}</span></h4>
+        </div>
+        <!--<div class="col col-md-2 pull-right">
+            <div class="row">
+                <div class="col-md-1">
+                    <br>
+                    <i class="fa fa-circle tripStatus"></i>
+                </div>
+                <div class="col-md-8">
+                    <br>
+                    <p>Ignition Status</p>
+                </div>
+            </div>
+        </div>-->
+        <div class="col col-md-2 pull-right">
+            <div class="row">
+                <div class="col-md-1">
+                    <br>
+                    <i class="fa fa-circle ignStatus"></i>
+                </div>
+                <div class="col-md-8">
+                    <br>
+                    <p>{{TripDetails.status}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col col-md-12">
+            <div id="map" style="height:60vh;width:100%"></div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col col-md-6 col-md-offset-3">
+            <div class="row">
+                <div class="col col-md-2">
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <i style="color:red" class="fa fa-circle"></i>
+                        </div>
+                        <div class="col col-md-8">
+                            <p>Alarm
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-2">
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <i style="color:brown" class="fa fa-circle"></i>
+                        </div>
+                        <div class="col col-md-8">
+                            <p>Brake
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-3">
+                    <div class="row">
+                        <div class="col col-md-2">
+                            <i style="color:#ffc107" class="fa fa-circle"></i>
+                        </div>
+                        <div class="col col-md-10">
+                            <p>Acc. Cut Off
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-2">
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <i  style="color:#2196f3" class="fa fa-circle"></i>
+                        </div>
+                        <div class="col col-md-8">
+                            <p>Sleep
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-2">
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <i style="color:#9c27b0" class="fa fa-circle"></i>
+                        </div>
+                        <div class="col col-md-8">
+                            <p>LIMP
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col col-md-2">
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <i class="fa fa-circle"></i>
+                        </div>
+                        <div class="col col-md-8">
+                            <p>Legend
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col col-md-12">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="widget bg-white">
+                      <div class="text-info h4 mt0 mb0">Faults Info</div>
+                      <div class="row">
+                          <div class="col-md-3">
+                              <br>
+                              <h5><b>Sleep Alert Count</b></h5>
+                              <p>{{TripDetails.vehicle.ecu_unit.serial_no}}</p>
+                          </div>
+                          <div class="col-md-3">
+                              <br>
+                              <h5><b>Tailgating Count</b></h5>
+                              <p>{{TripDetails.vehicle.ecu_unit.version_no}}</p>
+                          </div>
+                          <div class="col-md-3">
+                              <br>
+                              <h5><b>Overspeeding Count</b></h5>
+                              <p>{{TripDetails.vehicle.ecu_unit.ecu_type.name}}</p>
+                          </div>
+                          <div class="col-md-3">
+                              <br>
+                              <h5><b>Accident Count</b></h5>
+                              <p>{{TripDetails.vehicle.ecu_unit.manufactured_on|date:format:"dd:M:YYYY"}}</p>
+                          </div>
+                          <div class="col-md-3">
+                              <br>
+                              <h5><b>Greenzone Count</b></h5>
+                              <p>{{TripDetails.vehicle.ecu_unit.serial_no}}</p>
+                          </div>
+                          <div class="col-md-3">
+                              <br>
+                              <h5><b>Speed Break Count</b></h5>
+                              <p>{{TripDetails.vehicle.ecu_unit.version_no}}</p>
+                          </div>
+                          <div class="col-md-3">
+                              <br>
+                              <h5><b>Lane Change Count</b></h5>
+                              <p>{{TripDetails.vehicle.ecu_unit.ecu_type.name}}</p>
+                          </div>
+                          <div class="col-md-3">
+                              <br>
+                              <h5><b>Breaking Count</b></h5>
+                              <p>{{TripDetails.vehicle.ecu_unit.manufactured_on|date:format:"dd:M:YYYY"}}</p>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="widget bg-white">
+                        <div class="text-info h4 mt0 mb0">Driver Info</div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <br>
+                                <h5><b>Driver Name</b></h5>
+                                <p>{{TripDetails.driver.name}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h5><b>Driver Address</b></h5>
+                                <p>{{TripDetails.driver.address}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <br>
+                                <h5><b>Mobile Number</b></h5>
+                                <p>{{TripDetails.driver.mobile_no}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h5><b>License Number</b></h5>
+                                <p>{{TripDetails.driver.license_no}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="widget bg-white">
+                        <div class="text-info h4 mt0 mb0">Vehicle Info</div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <br>
+                                <h5><b>Vehicle No.</b></h5>
+                                <p>{{TripDetails.vehicle.vehicle_no}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h5><b>Vehicle Type</b></h5>
+                                <p>{{TripDetails.vehicle.vehicle_type.name}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <br>
+                                <h5><b>Registration No.</b></h5>
+                                <p>{{TripDetails.vehicle.registration_no}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="widget bg-white">
+                        <div class="text-info h4 mt0 mb0">ECU Info</div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <br>
+                                <h5><b>Serial No.</b></h5>
+                                <p>{{TripDetails.vehicle.ecu_unit.serial_no}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h5><b>Version No.</b></h5>
+                                <p>{{TripDetails.vehicle.ecu_unit.version_no}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <br>
+                                <h5><b>Type</b></h5>
+                                <p>{{TripDetails.vehicle.ecu_unit.ecu_type.name}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h5><b>Manufacture Date</b></h5>
+                                <p>{{TripDetails.vehicle.ecu_unit.manufactured_on|date:format:"dd:M:YYYY"}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="widget bg-white">
+                        <div class="text-info h4 mt0 mb0">Device Info</div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <br>
+                                <h5><b>Serial No.</b></h5>
+                                <p>{{TripDetails.vehicle.device_unit.serial_no}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <br>
+                                <h5><b>Version Number</b></h5>
+                                <p>{{TripDetails.vehicle.device_unit.version_no}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <br>
+                                <h5><b>SIM No.</b></h5>
+                                <p>{{TripDetails.vehicle.device_unit.sim_no}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <br>
+                                <h5><b>IMEI No.</b></h5>
+                                <p>{{TripDetails.vehicle.device_unit.imei_no}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <br>
+                                <h5><b>SIM Carrier</b></h5>
+                                <p>{{TripDetails.vehicle.device_unit.sim_carrier}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <br>
+                                <h5><b>Android Version</b></h5>
+                                <p>{{TripDetails.vehicle.device_unit.android_version}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,192 @@
+<div class="panel">
+   <div class="panel-heading">
+     <button class="btn btn-default btn-xs pull-right"   data-toggle="modal" data-target="#addDriver">Create</button>
+     <br><br>
+     <strong>Drivers </strong>
+     <input type="text" placeholder="Search" class="pull-right" ng-model="search">
+          <br>
+          <br>
+<p>Items per page</p>
+<select ng-model="pageSize">
+  <option value=5>5</option>
+  <option value=10>10</option>
+  <option value=15>15</option>
+
+</select>
+      
+   </div>
+   <div class="panel-body">
+     <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+        <tr class="bold">
+        <!-- <td style="width:10%">ID</td> -->
+         <td style="width:10%">Mobile No.<i class="fa fa-caret-down pull-right" ng-click="sort('mobile_no')"></i></td>
+         <td style="width:10%">Name<i class="fa fa-caret-down pull-right" ng-click="sort('name')"></i></td>
+         <td style="width:10%">Address<i class="fa fa-caret-down pull-right" ng-click="sort('address')"></i></td>
+        
+         <td style="width:10%">License No<i class="fa fa-caret-down pull-right" ng-click="sort('license_no')"></td>
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+
+        </tr>
+        <tr dir-paginate="d in drivers | filter:search | orderBy: 'done' :reverse | itemsPerPage:pageSize  ">
+        <!-- <td style="width:10%">{{v._id}}</td> -->
+         <td style="width:10%">{{d.mobile_no}}</td>
+         <td style="width:10%">{{d.name}}</td>
+         <td style="width:10%">{{d.address}}</td>
+        
+         <td style="width:20%">{{d.license_no}}</td>
+         <td><button class="btn btn-success btn-outline" ng-click="getDriverData(d._id)"  data-toggle="modal" data-target="#editDriver" >Edit</button></td>
+         <td><button class="btn btn-danger" ng-click="deleteDriver(d._id)" >X</button></td>
+        </tr>
+     </table>
+          <dir-pagination-controls 
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" > 
+    </dir-pagination-controls>  
+   </div>
+ </div>
+
+<div id="addDriver" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Create Driver</h4>
+     </div>
+     <div class="modal-body">
+            <div class="alert alert-danger alert-dismissable" ng-show="error">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Note </strong> {{errorMsg}}
+              <ul>
+                  <li ng-repeat='x in errorLists'>{{x}}</li>
+              </ul>
+            </div>
+            <form name="driverCreate">
+            <div class="form-group ">
+          
+
+            <label>Profile Picture</label><span class="ast">*</span>
+           <input type="file" id="imageLoader1" name="imageLoader1" />
+              <canvas id="imageCanvas1"></canvas>
+            </div>
+            <div class="form-group">
+            <label>Name</label><span class="ast">*</span>
+            <input type="text" class="form-control" name="driverName" ng-model="driverName" required>
+            <span class="Clienterror" ng-show=" driverCreate.driverName.$invalid && clicked" >This field is required.</span>
+            </div>
+
+
+            <div class="form-group">
+            <label>Address</label><span class="ast">*</span>
+            <textarea type="text" class="form-control" name="driverAdd" ng-model="driverAdd" required>
+              <span class="Clienterror" ng-show=" driverCreate.driverAdd.$invalid && clicked" >This field is required.</span>
+            </textarea>
+            </div>
+
+            <div class="form-group">
+            <label>Mobile Number</label><span class="ast">*</span>
+            <input type="text" class="form-control" name="driverMobile" ng-model="driverMobile" required>
+              <span class="Clienterror" ng-show=" driverCreate.driverMobile.$invalid && clicked" >This field is required.</span>
+            
+            </div>
+
+            <div class="form-group">
+            <label>License Number</label><span class="ast">*</span>
+            <input type="text" class="form-control" name="driverLicNo" ng-model="driverLicNo" required>
+              <span class="Clienterror" ng-show=" driverCreate.driverLicNo.$invalid && clicked" >This field is required.</span>
+            
+            </div>
+            
+
+
+
+     <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="createDriver('driverCreate')">Save</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+     </form>
+   </div>
+
+ </div>
+</div>
+
+
+</div>
+
+  
+
+
+
+<div id="editDriver" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Edit Driver</h4>
+     </div>
+     <div class="modal-body">
+            <div class="alert alert-danger alert-dismissable" ng-show="error">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Note </strong> {{errorMsg}}
+              <ul>
+                  <li ng-repeat='x in errorLists'>{{x}}</li>
+              </ul>
+            </div>
+
+            <form name="editDriverForm">
+              
+             
+            
+              <div class="form-group ">
+          
+            <!-- <img src="{{driverEditDetails.profile_url}}" style="height:150px;width:150px"> -->
+            <label>Profile Picture</label><span class="ast">*</span>
+            <input type="file" id="imageLoader2" name="imageLoader2"/>
+            <div id="canvasHolder">
+             <canvas id="imageCanvas2"></canvas>
+            </div>
+            </div>
+            <div class="form-group">
+            <label>Name</label><span class="ast">*</span>
+            <input type="text" class="form-control" name="name" ng-model="driverEditDetails.name" required>
+            <span class="Clienterror" ng-show="  editDriverForm.name.$invalid && clicked1">Vehicle Type Make is required.</span>
+            </div>
+
+
+            <div class="form-group">
+            <label>Address</label><span class="ast">*</span>
+            <input type="text" class="form-control" name="address" ng-model="driverEditDetails.address" required>
+            <span class="Clienterror" ng-show="  editDriverForm.address.$invalid && clicked1">Vehicle Type Make is required.</span>
+            
+            </div>
+
+            <div class="form-group">
+            <label>Mobile Number</label><span class="ast">*</span>
+            <input type="text" class="form-control" name="mobile_no" ng-model="driverEditDetails.mobile_no" required>
+            <span class="Clienterror" ng-show="  editDriverForm.mobile_no.$invalid && clicked1">Vehicle Type Make is required.</span>
+            
+            </div>
+
+            <div class="form-group">
+            <label>License Number</label><span class="ast">*</span>
+            <input type="text" class="form-control" name="license_no" ng-model="driverEditDetails.license_no" required>
+            <span class="Clienterror" ng-show="  editDriverForm.license_no.$invalid && clicked1">Vehicle Type Make is required.</span>
+            
+            </div>
+
+
+
+
+     <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="EditDriver(driverEditDetails._id,'editDriverForm')"   >Save</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+     </form>
+   </div>
+
+ </div>
+</div>
+
+
+</div>

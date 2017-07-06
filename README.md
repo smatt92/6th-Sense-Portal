@@ -1,1 +1,2 @@
-# 6th Sense Portal
+# sixthsense-portal
+# This is the master branch

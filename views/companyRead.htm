@@ -1,0 +1,509 @@
+<div class="panel-heading" style="background-color:#fff;">
+    <!--div class="createNewCompanyButton"-->
+            <button id="createNewCompanyBtn"  ng-click="createNewCompanyBtn()" class="btn btn-default btn-xs pull-right createNewCompanyButton btn ">Create</button>
+    <!--/div-->
+    <br><br>
+     <input type="text" placeholder="Search" class="pull-right" ng-model=search></input>
+      <strong>Create Device Units</strong>
+      <p>Items per page</p>
+<select ng-model="pageSize">
+  <option value=5>5</option>
+  <option value=10>10</option>
+  <option value=15>15</option>
+
+</select>
+</div>
+<div class="panel-body" style="background-color:#fff;"">
+
+	<table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+       <tr class="bold">
+
+         <td style="width:10%">Name<i class="fa fa-caret-down pull-right" ng-click=sort('name')></i></td>
+         <!-- <td style="width:10%">Addresss</td> -->
+         <td style="width:10%">Fleet Size<i class="fa fa-caret-down pull-right" ng-click=sort('fleet_size')></i></td>
+         <td style="width:10%">Phone Numbe<i class="fa fa-caret-down pull-right" ng-click=sort('phone_no')></i>r</td>
+         <td style="width:10%">Pan Number<i class="fa fa-caret-down pull-right" ng-click=sort('pan_no')></i></td>
+         <td style="width:10%">Director Name<i class="fa fa-caret-down pull-right" ng-click=sort('director_name')></i></td>
+         <td style="width:10%">Director Phone Number<i class="fa fa-caret-down pull-right" ng-click=sort('director_phone_no')></i></td>
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+
+       </tr>
+      <tr dir-paginate ="c in companyDetails | filter:search | orderBy: 'done' :reverse | itemsPerPage:pageSize ">
+
+               <td style="width:10%"  ng-click="AddDatatoReadSingle(c)"><a style=" text-decoration: underline;font-weight: bold;color:blue">{{c.name}}</a></td>
+
+         <!-- <td style="width:10%">{{c.address}}</td> -->
+         <td style="width:10%">{{c.fleet_size}}</td>
+         <td style="width:10%">{{c.phone_no}}</td>
+         <td style="width:10%">{{c.pan_no}}</td>
+         <td style="width:10%">{{c.director_name}}</td>
+         <td style="width:10%">{{c.director_phone_no}}</td>
+         <td><button class="btn btn-success btn-outline" ng-click="AddDatatoUpdate(c)" >Edit</button></td>
+         <td><button class="btn btn-danger"  ng-click="deleteCompany(c)" >X</button></td>
+
+       </tr>
+     </table>
+          <dir-pagination-controls 
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" > 
+    </dir-pagination-controls> 
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+
+
+<div class="readCompany" style="min-height:60vh;background-color: #fff">
+        <div class="row mb25">
+          <div class="col-md-12">
+            <div class="box-tab justified">
+              <ul class="nav nav-tabs">
+
+                <li  class="active"><a data-target="#about4" data-toggle="tab">Admins</a>
+                </li>
+                <li><a data-target="#contacts4" data-toggle="tab">ECU's</a>
+                </li>
+                <li><a data-target="#users3" data-toggle="tab">Devices</a>
+                </li>
+                <li><a data-target="#users4" data-toggle="tab">Features</a>
+                </li>
+
+              </ul>
+              <div class="tab-content">
+
+
+
+
+
+
+
+                <div class="tab-pane active" id="about4">
+
+                	<table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%">Name</td>
+         <td style="width:10%">Email</td>
+
+
+
+
+       </tr>
+
+      <tr ng-repeat="c in companyData.admins">
+
+         <td style="width:10%">{{c.name}}</td>
+         <td style="width:10%">{{c.username}}</td>
+
+       </tr>
+
+     </table>
+
+                </div>
+
+                <div class="tab-pane" id="contacts4">
+                  <table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%"> Ecu Type</td>
+         <td style="width:10%">Manufactured On</td>
+         <td style="width:10%">version no</td>
+         <td style="width:10%"> serial no</td>
+
+
+
+
+
+
+       </tr>
+
+      <tr ng-repeat="c in companyData.ecus">
+
+         <td style="width:10%">{{c.ecu_type}}</td>
+         <td style="width:10%">{{c.manufactured_on | date:format:"dd:M:YYYY"}}</td>
+         <td style="width:10%">{{c.serial_no}}</td>
+         <td style="width:10%">{{c.version_no }}</td>
+
+
+
+       </tr>
+     </table>
+
+
+                </div>
+
+                <div class="tab-pane" id="users3">
+                  <table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%">Serial No</td>
+         <td style="width:10%">Version No</td>
+         <td style="width:10%">SIM No</td>
+         <td style="width:10%">IMEI No</td>
+         <td style="width:10%">Sim Carrier</td>
+		 <td style="width:10%">Android Version</td>
+
+
+
+
+
+       </tr>
+      <tr ng-repeat="c in companyData.devices">
+
+         <td style="width:10%">{{c.serial_no}}</td>
+         <td style="width:10%">{{c.version_no}}</td>
+         <td style="width:10%">{{c.sim_no}}</td>
+         <td style="width:10%">{{c.imei_no }}</td>
+         <td style="width:10%">{{c.sim_carrier}}</td>
+         <td style="width:10%">{{c.android_version}}</td>
+
+
+
+       </tr>
+     </table>
+
+
+                </div>
+
+
+
+
+                <div class="tab-pane" id="users4">
+
+
+                	<div class="container-fluid">
+                      <div class="row">
+                          <h4>CAS</h4><br>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <p>{{companyData.feature.cas.enabled}}</p>
+                                      <!--<select class=" chosen" ng-model="cas">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>-->
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Alarm Th</label>
+                                  <div class="col-sm-8">
+                                      <p class="" ng-model="alarmTh" name="">{{companyData.feature.cas.alarm_th}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Brake Th</label>
+                                  <div class="col-sm-8">
+                                      <p class="" ng-model="brakeTh" name="">{{companyData.feature.cas.brake_th}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Brake Speed</label>
+                                  <div class="col-sm-8">
+                                      <p class="" ng-model="brakeSpeed" name="">{{companyData.feature.cas.brake_speed}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>SLEEP ALERT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                     <p>{{companyData.feature.sleep_alert.enabled}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Switch Interval</label>
+                                  <div class="col-sm-8">
+                                    <p>{{companyData.feature.sleep_alert.switch_interval}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Switch On</label>
+                                  <div class="col-sm-8">
+                                        <p>{{companyData.feature.sleep_alert.switch_on}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Switch Off</label>
+                                  <div class="col-sm-8">
+                                       <p>{{companyData.feature.sleep_alert.switch_off}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>TPMS</h4><br>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                     <p>{{companyData.feature.tpms.enabled}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Cut</label>
+                                  <div class="col-sm-8">
+                                       <p>{{companyData.feature.tpms.cut}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                      <p>{{companyData.feature.tpms.interval}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--<div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Up Thershold</label>
+                                  <div class="col-sm-8">
+                                      <p class="" ng-model="upTh" name=""></p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Down Thershold</label>
+                                  <div class="col-sm-8">
+                                      <p class="" ng-model="dwTh" name=""></p>
+                                  </div>
+                              </div>
+                          </div>-->
+                          <div class="col-sm-2"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ACC ALERT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                        <p>{{companyData.feature.acc_alert.enabled}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">ERC1</label>
+                                  <div class="col-sm-8">
+                                     <p>{{companyData.feature.acc_alert.erc_1}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-8"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ALC CHECK</h4><br>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                       <p>{{companyData.feature.alc_check.enabled}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                       <p>{{companyData.feature.alc_check.interval}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Threshold</label>
+                                  <div class="col-sm-8">
+                                     <p>{{companyData.feature.alc_check.threshold}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>HONK CHECK</h4><br>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                        <p>{{companyData.feature.honk_check.enabled}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Threshold 1</label>
+                                  <div class="col-sm-8">
+                                       <p>{{companyData.feature.honk_check.threshold_1}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Threshold 2</label>
+                                  <div class="col-sm-8">
+                                       <p>{{companyData.feature.honk_check.threshold_2}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>OBD</h4><br>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                     <p>{{companyData.feature.obd.enabled}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                    <p>{{companyData.feature.obd.interval}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-8"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>FUEL SENSOR</h4><br>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                       <p>{{companyData.feature.fuel_sensor.enabled}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>EXTRA BATT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <p>{{companyData.feature.extra_batt.enabled}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>CRUISE</h4><br>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                       <p>{{companyData.feature.cruise.enabled}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Speed</label>
+                                  <div class="col-sm-8">
+                                      <p>{{companyData.feature.cruise.speed}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ACC CUTOFF BRAKE</h4><br>
+                          <div class="col-sm-2">
+                              <div class="">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <p>{{companyData.feature.acc_cutoff_brake.enabled}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+
+
+                <div class="tab-pane" id="settings4">
+
+
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

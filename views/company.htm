@@ -1,0 +1,2111 @@
+
+<div id="createPopup" class="main-content checkbo" style="min-height: 60vh">
+        <div class="box-tab justified" id="rootwizard">
+            <ul class="nav nav-tabs" style="background-color: #fff; ">
+                <li class="active" ><a id="atab1"  data-target="#tab1" data-toggle="tab" >1. Company details</a>
+                </li>
+                <li class="disabled"><a  class="disabled" id="atab2" data-target="#tab2" data-toggle="tab"  >2. Add Admin</a>
+                </li>
+                <li class="disabled"><a class="disabled" id="atab3" data-target="#tab3" data-toggle="tab" >3. Add ECU</a>
+                </li>
+                <li  class="disabled"><a class="disabled" id="atab4" data-target="#tab4" data-toggle="tab"  >4. Add Device</a>
+                </li>
+                <li class="disabled"><a class="disabled" id="atab5" data-target="#tab5" data-toggle="tab" >5. Add Features</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    <div><br><br>
+                        <div class="row">
+                            <form name="companyDetails">
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label">Name</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" ng-model="companyName" name="companyName" required>
+                                            <span class="Clienterror" ng-show="(companyDetails.companyName.$invalid) && clicked1 ">Field is required.</span>
+                                        </div>
+                                    </div><br/><br/>
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label">Address</label>
+                                        <div class="col-sm-7">
+                                            <textarea class="form-control" ng-model="companyAdd" rows="3" name="companyAdd" required></textarea>
+                                            <span class="Clienterror" ng-show="(companyDetails.companyAdd.$invalid) && clicked1 ">Field is required.</span><br/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label">Fleet Size</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" ng-model="fleetSize" id="" name="fleetSize" required>
+                                            <span class="Clienterror" ng-show="(companyDetails.fleetSize.$invalid) && clicked1">Field is required.</span>
+                                        </div>
+                                    </div><br/><br/>
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label">Phone Number</label>
+                                        <div class="col-sm-7 form-inline" >
+                                            <div class="row">
+                                                <div class="col col-sm-3"-->
+                                                    <input type="text" class="form-control col-sm-2" style="max-width: 45px !important" ng-model="phoneCode" move-next-on-maxlength maxlength=3>
+                                                </div>
+                                            <!--/div>
+                                            <div class="row"-->
+                                                <div class="col col-sm-9">
+                                                    <input type="text" class="form-control col-sm-6" ng-model="phoneNumber" id="" name="phoneNumber" required>
+                                                    <span class="Clienterror" ng-show="(companyDetails.phoneNumber.$invalid) && clicked1">Field is required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><br/><br/>
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label">Pan Number</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" ng-model="panNo" name="panNo" required>
+                                            <span class="Clienterror" ng-show="(companyDetails.panNo.$invalid) && clicked1">Field is required.</span>
+                                        </div>
+                                    </div><br/><br/>
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label">Director Name</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" ng-model="DirectorName" id="" name="DirectorName" required>
+                                            <span class="Clienterror" ng-show="(companyDetails.DirectorName.$invalid) && clicked1">Field is required.</span>
+                                        </div>
+                                    </div><br/><br/>
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label">Director Phone Number</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" ng-model="DirectorMoNo" id="" name="DirectorMoNo" required>
+                                            <span class="Clienterror" ng-show=" (companyDetails.DirectorMoNo.$invalid) && clicked1">Field is required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div><br><br>
+                        <div class="row btnHolder text-right">
+                            <div class="col-md-3 pull-right">
+                                <button type="button" class="btn btn-primary button-next" ng-click="next1('companyDetails')" id="next1">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab2"><br>
+                    <div>
+                        <form name="CompanyAdminDetails">
+                            <div class="form-group">
+                                <div class="row">
+                                <div class="col-sm-4">
+                                    <label class="col-sm-4 control-label">Name</label>
+                                    <input type="text" class="form-control" ng-model="adminName" id="" name="">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                <div class="col-sm-4">
+                                    <label class="col-sm-4 control-label">Email Address</label>
+                                    <input type="email" class="form-control" name="email" required  ng-model="adminEmail" >
+                                    <p ng-show="CompanyAdminDetails.email.$invalid && !CompanyAdminDetails.email.$pristine" class="Clienterror">Enter a valid email.</p>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-primary" ng-click="saveAdmin()">Save</button>
+                                </div>
+                                <div class="col-sm-3"></div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="panel-body">
+                        <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email Address</th>
+                                    <th>Update</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="admins in adminArr">
+                                    <td>{{admins.name}}</td>
+                                    <td>{{admins.username}}</td>
+                                    <td><a href="javascript:;" ng-click="deleteAdmin($index);" class="delete">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row btnHolder text-right">
+                        <div class="col-md-3 pull-right">
+                           
+                            <button type="button" class="btn btn-primary button-next" ng-click="next2()" id="next2">Next</button>
+                             <button type="button" class="btn btn-default button-prev" ng-click="prev2()" id="prev2">Previous</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab3">
+                    <form name="ecuForm">
+                        <h3>Select ECU Units</h3>
+                        <br/>
+                        <ui-select multiple ng-model="ecuTypes.value" name="ecuTypes" required>
+                            <ui-select-match>
+                                {{$item.serial_no}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="item in (EcuitemArray[0] | filter: $select.search) track by item._id">
+                                <span ng-bind="item.serial_no"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                        <p ng-show="ecuForm.ecuTypes.$invalid && checked3" class="Clienterror">Please Select The ECU Type.</p>
+                        <div class="row btnHolder text-right">
+                            <div class="col-md-3 pull-right">
+                              
+                                <button type="button" class="btn btn-primary button-next" ng-click="next3('ecuForm')" >Next</button>
+                                  <button type="button" class="btn btn-default button-prev" ng-click="prev3()" id="prev3">Previous</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="tab-pane" id="tab4">
+                    <h3>Select Device Units </h3>
+                    <br/>
+                    <form name="deviceForm">
+                        <ui-select multiple ng-model="deviceUnit.value" name="deviceUnit"  required>
+                            <ui-select-match>
+                                {{$item.serial_no}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="item in (DeviceArray[0] | filter: $select.search) track by item.serial_no">
+                                <span ng-bind="item.serial_no"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                        <p ng-show="deviceForm.deviceUnit.$invalid && checked4" class="Clienterror">Please Select The Device Type.</p>
+                        <div class="row btnHolder text-right">
+                            <div class="col-md-3 pull-right">
+                     
+                                <button type="button" class="btn btn-primary button-next" ng-click="next4('deviceForm')">Next</button>
+                                           <button type="button" class="btn btn-default button-prev" ng-click="prev4()" id="prev4">Previous</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="tab5">
+                    <form name="features">
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>CAS</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox"  ng-model="casChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Alarm Threshold</label>
+                                            <div>
+                                                <input type="text"  class="form-control" ng-required="casChecked" ng-disabled="!casChecked" ng-model="alarmTh" name="alarmTh">
+                                                <p ng-show="features.alarmTh.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Brake Threshold</label>
+                                            <div>
+                                                <input type="text" class="form-control"  ng-required="casChecked" ng-disabled="!casChecked" ng-model="brakeTh" name="brakeTh">
+                                                <p ng-show="features.brakeTh.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Brake Speed</label>
+                                            <div>
+                                                <input type="text" class="form-control"  ng-required="casChecked"  ng-disabled="!casChecked" ng-model="brakeSpeed" name="brakeSpeed">
+                                                <p ng-show="features.brakeSpeed.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><hr><br>
+
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>SLEEP ALERT</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox" ng-model="sleepAlertChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Switch Interval</label>
+                                        <div>
+                                            <input type="text" ng-required="sleepAlertChecked"  class="form-control" ng-disabled="!sleepAlertChecked" ng-model="SwitchInterval" name="SwitchInterval">
+                                            <p ng-show="features.SwitchInterval.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Switch On</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="sleepAlertChecked" ng-disabled="!sleepAlertChecked"  ng-model="switchOn" name="switchOn">
+                                            <p ng-show="features.switchOn.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Switch Off</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="sleepAlertChecked" ng-disabled="!sleepAlertChecked" ng-model="switchOff" name="switchOff">
+                                            <p ng-show="features.switchOff.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><hr><br>
+
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>TPMS</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox" ng-model="tpmsChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">Cut</label>
+                                        <div>
+                                            <select class="form-control chosen" ng-required="tpmsChecked" ng-disabled="!tpmsChecked" ng-model="cut" name="cut">
+                                                <option>YES</option>
+                                                <option>NO</option>
+                                            </select>
+                                            <p ng-show="features.cut.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">Interval</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="tpmsChecked"  ng-disabled="!tpmsChecked"  ng-model="tpmsinterval" name="tpmsinterval">
+                                            <p ng-show="features.tpmsinterval.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">Up Thershold</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="tpmsChecked"  ng-disabled="!tpmsChecked"  ng-model="tpmsupTh" name="tpmsupTh">
+                                            <p ng-show="features.tpmsupTh.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">Down Thershold</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="tpmsChecked"  ng-disabled="!tpmsChecked"  ng-model="tpmsdwTh" name="tpmsdwTh">
+                                            <p ng-show="features.tpmsdwTh.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><hr><br>
+
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>ACC ALERT</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox" ng-model="accAlertChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">ERC1</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="accAlertChecked"  ng-disabled="!accAlertChecked" ng-model="erc1" name="erc1">
+                                            <p ng-show="features.erc1.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><hr><br>
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>ALC CHECK</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox" ng-model="alcCheckChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Interval</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="alcCheckChecked"  ng-disabled="!alcCheckChecked" ng-model="accInterval" name="accInterval">
+                                            <p ng-show="features.accInterval.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Threshold</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="alcCheckChecked" ng-disabled="!alcCheckChecked" ng-model="accTh" name="accTh">
+                                            <p ng-show="features.accTh.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><hr><br>
+
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>HONK CHECK</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox" ng-model="honkChkChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Threshold 1</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="honkChkChecked" ng-disabled="!honkChkChecked" ng-model="honkChkTh1" name="honkChkTh1">
+                                            <p ng-show="features.honkChkTh1.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Threshold 2</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="honkChkChecked"  ng-disabled="!honkChkChecked" ng-model="honkChkTh2" name="honkChkTh2">
+                                            <p ng-show="features.honkChkTh2.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><hr><br>
+
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>OBD</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox" ng-model="obdChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Interval</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="obdChecked" ng-disabled="!obdChecked" ng-model="obdInterval" name="obdInterval">
+                                            <p ng-show="features.obdInterval.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><hr><br>
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>FUEL SENSOR</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox" ng-model="fuelChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                            </div>
+                        </div><br><hr><br>
+
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>EXTRA BATT</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox" ng-model="extBattChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                            </div>
+                        </div><br><hr><br>
+
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>CRUISE</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox" ng-model="cruiseChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Speed</label>
+                                        <div>
+                                            <input type="text" class="form-control" ng-required="cruiseChecked" ng-disabled="!cruiseChecked" ng-model="speed" name="speed">
+                                            <p ng-show="features.speed.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><hr><br>
+
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>ACC CUTOFF BRAKE</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox" ng-model="accCutOffChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                            </div>
+                        </div><br><hr><br>
+
+                        <div class="container-fluid cardFeatures">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>ACC CUTOFF ERROR</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="switch switch-sm switchFeatures">
+                                            <input type="checkbox" ng-model="accCutOfferrorChecked" checked>
+                                            <span><i class="handle"></i></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                            </div>
+                        </div>
+                        <div class="row btnHolder">
+                            <div class="col-md-3 pull-right">
+                            
+                                <button type="button" ng-click="createCompany('features');" class="btn btn-success create" >Create</button>
+                                    <button type="button" class="btn btn-default button-prev" ng-click="prev5()" id="prev5">Previous</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="wizard-pager">
+                    <div class="pull-right">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+<script>
+
+</script>
+
+<!--
+<div class="readCompany" style="min-height:60vh;background-color: #fff">
+        <div class="row mb25">
+          <div class="col-md-12">
+            <div class="box-tab justified">
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-target="#home4" data-toggle="tab">Company</a>
+                </li>
+                <li><a data-target="#profile4" data-toggle="tab">Admins</a>
+                </li>
+                <li><a data-target="#about4" data-toggle="tab">ECU's</a>
+                </li>
+                <li><a data-target="#contacts4" data-toggle="tab">Devices</a>
+                </li>
+                <li><a data-target="#users4" data-toggle="tab">Features</a>
+                </li>
+
+              </ul>
+              <div class="tab-content">
+
+                <div class="tab-pane active in" id="home4">
+
+
+                	<table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%">Name</td>
+         <td style="width:10%">Addresss</td>
+         <td style="width:10%">Fleet Size</td>
+         <td style="width:10%">Phone Number</td>
+         <td style="width:10%">Pan Number</td>
+         <td style="width:10%">Director Name</td>
+         <td style="width:10%">Director Phone Number</td>
+
+
+
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+       </tr>
+      <tr ng-repeat="c in companyDetails">
+
+         <td style="width:10%">{{c.name}}</td>
+         <td style="width:10%">{{c.address}}</td>
+         <td style="width:10%">{{c.fleet_size}}</td>
+         <td style="width:10%">{{c.phone_no}}</td>
+         <td style="width:10%">{{c.pan_no}}</td>
+         <td style="width:10%">{{c.director_name}}</td>
+         <td style="width:10%">{{c.director_phone_no}}</td>
+
+
+
+         <td><button data-toggle="modal" data-target="#editEcuType" ng-click="AddDataToEdit(e._id)" class="btn btn-success btn-outline">Edit</button></td>
+         <td><button class="btn btn-danger" ng-click="deleteEcuType(e._id);" >X</button></td>
+       </tr>
+     </table>
+   </div>
+
+
+
+
+                <div class="tab-pane" id="profile4">
+
+                   <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email Address</th>
+                            <th>Date Created</th>
+                            <th>Update</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>123</td>
+                            <td>ABC</td>
+                            <td>lorem@ipsum.com</td>
+                            <td>14-8-16</td>
+                            <td><a href="javascript:;" class="edit">Edit</a> / <a href="javascript:;" class="delete">Delete</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+
+                </div>
+
+
+                <div class="tab-pane" id="about4">
+
+                	<table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%">Serial No</td>
+         <td style="width:10%">Version No</td>
+         <td style="width:10%">ECU Type</td>
+         <td style="width:10%">Manufactured on</td>
+
+
+
+
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+       </tr>
+      <tr ng-repeat="ecu in companyecu">
+
+         <td style="width:10%">{{c.serial_no}}</td>
+         <td style="width:10%">{{c.version_no}}</td>
+         <td style="width:10%">{{c.ecu_type}}</td>
+         <td style="width:10%">{{c.manufactured_on}}</td>
+
+
+
+         <td><button data-toggle="modal" data-target="#editEcuType" ng-click="AddDataToEdit(e._id)" class="btn btn-success btn-outline">Edit</button></td>
+         <td><button class="btn btn-danger" ng-click="deleteEcuType(e._id);" >X</button></td>
+       </tr>
+     </table>
+
+                </div>
+
+
+
+                <div class="tab-pane" id="contacts4">
+                  <table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%">Serial No</td>
+         <td style="width:10%">Version No</td>
+         <td style="width:10%">SIM No</td>
+         <td style="width:10%">IMEI No</td>
+         <td style="width:10%">Sim Carrier</td>
+		 <td style="width:10%">Android Version</td>
+
+
+
+
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+       </tr>
+      <tr ng-repeat="d in companydevice">
+
+         <td style="width:10%">{{c.serial_no}}</td>
+         <td style="width:10%">{{c.version_no}}</td>
+         <td style="width:10%">{{c.sim_no}}</td>
+         <td style="width:10%">{{c.imei_no }}</td>
+         <td style="width:10%">{{c.sim_carrier}}</td>
+         <td style="width:10%">{{c.android_version}}</td>
+
+
+         <td><button data-toggle="modal" data-target="#editEcuType" ng-click="AddDataToEdit(e._id)" class="btn btn-success btn-outline">Edit</button></td>
+         <td><button class="btn btn-danger" ng-click="deleteEcuType(e._id);" >X</button></td>
+       </tr>
+     </table>
+
+
+                </div>
+
+
+
+
+                <div class="tab-pane" id="users4">
+
+
+                	<div class="container">
+                      <div class="row">
+                          <h4>CAS</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="cas">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Alarm Th</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="alarmTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Brake Th</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="brakeTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Brake Speed</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="brakeSpeed" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>SLEEP ALERT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="sleepAlert">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Switch Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="SwitchInterval" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Switch On</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="switchOn" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Switch Off</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="switchOff" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>TPMS</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="tpms">
+                                      <option>Yes</option>
+                                      <option>No</option>
+                                    </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Cut</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="cut">
+                         <option>Yes</option>
+                         <option>No</option>
+                       </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="tpmsinterval" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Up Thershold</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="upTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Down Thershold</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="dwTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ACC ALERT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="accAlert">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">ERC1</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="erc1" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-8"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ALC CHECK</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="alcCheck">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" name="accInterval">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Threshold</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="accTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>HONK CHECK</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="honkChk">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Threshold 1</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="honkChkTh1" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Threshold 2</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="honkChkTh2" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>OBD</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="obd">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="obdInterval" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-8"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>FUEL SENSOR</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="fuel">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>EXTRA BATT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="extBatt">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>CRUISE</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="cruise">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Speed</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="speed" name="">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ACC CUTOFF BRAKE</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="accCutOff">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+
+
+                <div class="tab-pane" id="settings4">
+
+
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+</div>
+<div class="createNewCompanyButton">
+    <button id="createNewCompanyBtn"  ng-click="createNewCompanyBtn()" class="createNewCompanyButton btn " >+</button>
+</div>-->
+<!--<div class="readCompany" style="min-height:60vh;background-color: #fff">
+        <div class="row mb25">
+          <div class="col-md-12">
+            <div class="box-tab justified">
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-target="#home4" data-toggle="tab">Company</a>
+                </li>
+                <li><a data-target="#profile4" data-toggle="tab">Admins</a>
+                </li>
+                <li><a data-target="#about4" data-toggle="tab">ECU's</a>
+                </li>
+                <li><a data-target="#contacts4" data-toggle="tab">Devices</a>
+                </li>
+                <li><a data-target="#users4" data-toggle="tab">Features</a>
+                </li>
+
+              </ul>
+              <div class="tab-content">
+
+                <div class="tab-pane active in" id="home4">
+
+
+                	<table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%">Name</td>
+         <td style="width:10%">Addresss</td>
+         <td style="width:10%">Fleet Size</td>
+         <td style="width:10%">Phone Number</td>
+         <td style="width:10%">Pan Number</td>
+         <td style="width:10%">Director Name</td>
+         <td style="width:10%">Director Phone Number</td>
+
+
+
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+       </tr>
+      <tr ng-repeat="c in companyDetails">
+
+         <td style="width:10%">{{c.name}}</td>
+         <td style="width:10%">{{c.address}}</td>
+         <td style="width:10%">{{c.fleet_size}}</td>
+         <td style="width:10%">{{c.phone_no}}</td>
+         <td style="width:10%">{{c.pan_no}}</td>
+         <td style="width:10%">{{c.director_name}}</td>
+         <td style="width:10%">{{c.director_phone_no}}</td>
+
+
+
+         <td><button data-toggle="modal" data-target="#editEcuType" ng-click="AddDataToEdit(e._id)" class="btn btn-success btn-outline">Edit</button></td>
+         <td><button class="btn btn-danger" ng-click="deleteEcuType(e._id);" >X</button></td>
+       </tr>
+     </table>
+   </div>
+
+
+
+
+                <div class="tab-pane" id="profile4">
+
+                   <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email Address</th>
+                            <th>Date Created</th>
+                            <th>Update</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>123</td>
+                            <td>ABC</td>
+                            <td>lorem@ipsum.com</td>
+                            <td>14-8-16</td>
+                            <td><a href="javascript:;" class="edit">Edit</a> / <a href="javascript:;" class="delete">Delete</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+
+                </div>
+
+
+                <div class="tab-pane" id="about4">
+
+                	<table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%">Serial No</td>
+         <td style="width:10%">Version No</td>
+         <td style="width:10%">ECU Type</td>
+         <td style="width:10%">Manufactured on</td>
+
+
+
+
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+       </tr>
+      <tr ng-repeat="ecu in companyecu">
+
+         <td style="width:10%">{{c.serial_no}}</td>
+         <td style="width:10%">{{c.version_no}}</td>
+         <td style="width:10%">{{c.ecu_type}}</td>
+         <td style="width:10%">{{c.manufactured_on}}</td>
+
+
+
+         <td><button data-toggle="modal" data-target="#editEcuType" ng-click="AddDataToEdit(e._id)" class="btn btn-success btn-outline">Edit</button></td>
+         <td><button class="btn btn-danger" ng-click="deleteEcuType(e._id);" >X</button></td>
+       </tr>
+     </table>
+
+                </div>
+
+
+
+                <div class="tab-pane" id="contacts4">
+                  <table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%">Serial No</td>
+         <td style="width:10%">Version No</td>
+         <td style="width:10%">SIM No</td>
+         <td style="width:10%">IMEI No</td>
+         <td style="width:10%">Sim Carrier</td>
+		 <td style="width:10%">Android Version</td>
+
+
+
+
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+       </tr>
+      <tr ng-repeat="d in companydevice">
+
+         <td style="width:10%">{{c.serial_no}}</td>
+         <td style="width:10%">{{c.version_no}}</td>
+         <td style="width:10%">{{c.sim_no}}</td>
+         <td style="width:10%">{{c.imei_no }}</td>
+         <td style="width:10%">{{c.sim_carrier}}</td>
+         <td style="width:10%">{{c.android_version}}</td>
+
+
+         <td><button data-toggle="modal" data-target="#editEcuType" ng-click="AddDataToEdit(e._id)" class="btn btn-success btn-outline">Edit</button></td>
+         <td><button class="btn btn-danger" ng-click="deleteEcuType(e._id);" >X</button></td>
+       </tr>
+     </table>
+
+
+                </div>
+
+
+
+
+                <div class="tab-pane" id="users4">
+
+
+                	<div class="container">
+                      <div class="row">
+                          <h4>CAS</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="cas">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Alarm Th</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="alarmTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Brake Th</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="brakeTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Brake Speed</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="brakeSpeed" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>SLEEP ALERT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="sleepAlert">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Switch Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="SwitchInterval" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Switch On</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="switchOn" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Switch Off</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="switchOff" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>TPMS</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="tpms">
+                                      <option>Yes</option>
+                                      <option>No</option>
+                                    </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Cut</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="cut">
+                         <option>Yes</option>
+                         <option>No</option>
+                       </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="tpmsinterval" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Up Thershold</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="upTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Down Thershold</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="dwTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ACC ALERT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="accAlert">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">ERC1</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="erc1" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-8"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ALC CHECK</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="alcCheck">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" name="accInterval">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Threshold</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="accTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>HONK CHECK</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="honkChk">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Threshold 1</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="honkChkTh1" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Threshold 2</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="honkChkTh2" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>OBD</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="obd">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="obdInterval" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-8"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>FUEL SENSOR</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="fuel">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>EXTRA BATT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="extBatt">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>CRUISE</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="cruise">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Speed</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="speed" name="">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ACC CUTOFF BRAKE</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="accCutOff">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+
+
+                <div class="tab-pane" id="settings4">
+
+
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+</div>-->
+
+<!-- SECOND COMPANY -->
+
+<!--
+<h5>2ND COMPANY</h5>
+        <div class="row mb25">
+          <div class="col-md-12">
+            <div class="box-tab justified">
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-target="#home4" data-toggle="tab">Company</a>
+                </li>
+                <li><a data-target="#profile4" data-toggle="tab">Admins</a>
+                </li>
+                <li><a data-target="#about4" data-toggle="tab">ECU's</a>
+                </li>
+                <li><a data-target="#contacts4" data-toggle="tab">Devices</a>
+                </li>
+                <li><a data-target="#users4" data-toggle="tab">Features</a>
+                </li>
+
+              </ul>
+              <div class="tab-content">
+
+                <div class="tab-pane active in" id="home4">
+
+
+                	<table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%">Name</td>
+         <td style="width:10%">Addresss</td>
+         <td style="width:10%">Fleet Size</td>
+         <td style="width:10%">Phone Number</td>
+         <td style="width:10%">Pan Number</td>
+         <td style="width:10%">Director Name</td>
+         <td style="width:10%">Director Phone Number</td>
+
+
+
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+       </tr>
+      <tr ng-repeat="c in companyDetails">
+
+         <td style="width:10%">{{c.name}}</td>
+         <td style="width:10%">{{c.address}}</td>
+         <td style="width:10%">{{c.fleet_size}}</td>
+         <td style="width:10%">{{c.phone_no}}</td>
+         <td style="width:10%">{{c.pan_no}}</td>
+         <td style="width:10%">{{c.director_name}}</td>
+         <td style="width:10%">{{c.director_phone_no}}</td>
+
+
+
+         <td><button data-toggle="modal" data-target="#editEcuType" ng-click="AddDataToEdit(e._id)" class="btn btn-success btn-outline">Edit</button></td>
+         <td><button class="btn btn-danger" ng-click="deleteEcuType(e._id);" >X</button></td>
+       </tr>
+     </table>
+   </div>
+
+
+
+
+                <div class="tab-pane" id="profile4">
+
+                   <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email Address</th>
+                            <th>Date Created</th>
+                            <th>Update</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>123</td>
+                            <td>ABC</td>
+                            <td>lorem@ipsum.com</td>
+                            <td>14-8-16</td>
+                            <td><a href="javascript:;" class="edit">Edit</a> / <a href="javascript:;" class="delete">Delete</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+
+                </div>
+
+
+                <div class="tab-pane" id="about4">
+
+                	<table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%">Serial No</td>
+         <td style="width:10%">Version No</td>
+         <td style="width:10%">ECU Type</td>
+         <td style="width:10%">Manufactured on</td>
+
+
+
+
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+       </tr>
+      <tr ng-repeat="ecu in companyecu">
+
+         <td style="width:10%">{{c.serial_no}}</td>
+         <td style="width:10%">{{c.version_no}}</td>
+         <td style="width:10%">{{c.ecu_type}}</td>
+         <td style="width:10%">{{c.manufactured_on}}</td>
+
+
+
+         <td><button data-toggle="modal" data-target="#editEcuType" ng-click="AddDataToEdit(e._id)" class="btn btn-success btn-outline">Edit</button></td>
+         <td><button class="btn btn-danger" ng-click="deleteEcuType(e._id);" >X</button></td>
+       </tr>
+     </table>
+
+                </div>
+
+
+
+                <div class="tab-pane" id="contacts4">
+                  <table class="table table-bordered table-hover table-condensed align-middle">
+       <tr class="bold">
+
+         <td style="width:10%">Serial No</td>
+         <td style="width:10%">Version No</td>
+         <td style="width:10%">SIM No</td>
+         <td style="width:10%">IMEI No</td>
+         <td style="width:10%">Sim Carrier</td>
+		 <td style="width:10%">Android Version</td>
+
+
+
+
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+       </tr>
+      <tr ng-repeat="d in companydevice">
+
+         <td style="width:10%">{{c.serial_no}}</td>
+         <td style="width:10%">{{c.version_no}}</td>
+         <td style="width:10%">{{c.sim_no}}</td>
+         <td style="width:10%">{{c.imei_no }}</td>
+         <td style="width:10%">{{c.sim_carrier}}</td>
+         <td style="width:10%">{{c.android_version}}</td>
+
+
+         <td><button data-toggle="modal" data-target="#editEcuType" ng-click="AddDataToEdit(e._id)" class="btn btn-success btn-outline">Edit</button></td>
+         <td><button class="btn btn-danger" ng-click="deleteEcuType(e._id);" >X</button></td>
+       </tr>
+     </table>
+
+
+                </div>
+
+
+
+
+                <div class="tab-pane" id="users4">
+
+
+                	<div class="container">
+                      <div class="row">
+                          <h4>CAS</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="cas">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Alarm Th</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="alarmTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Brake Th</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="brakeTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Brake Speed</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="brakeSpeed" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>SLEEP ALERT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="sleepAlert">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Switch Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="SwitchInterval" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Switch On</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="switchOn" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Switch Off</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="switchOff" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>TPMS</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="tpms">
+                                      <option>Yes</option>
+                                      <option>No</option>
+                                    </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Cut</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="cut">
+                         <option>Yes</option>
+                         <option>No</option>
+                       </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="tpmsinterval" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Up Thershold</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="upTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Down Thershold</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="dwTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ACC ALERT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="accAlert">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">ERC1</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="erc1" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-8"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ALC CHECK</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="alcCheck">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" name="accInterval">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Threshold</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="accTh" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>HONK CHECK</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="honkChk">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Threshold 1</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="honkChkTh1" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Threshold 2</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="honkChkTh2" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>OBD</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="obd">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Interval</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="obdInterval" name="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-8"></div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>FUEL SENSOR</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="fuel">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>EXTRA BATT</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="extBatt">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>CRUISE</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="cruise">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Speed</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" ng-model="speed" name="">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div><br><hr><br>
+
+                  <div class="container">
+                      <div class="row">
+                          <h4>ACC CUTOFF BRAKE</h4><br>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label class="col-sm-4 control-label">Enabled</label>
+                                  <div class="col-sm-8">
+                                      <select class="form-control chosen" ng-model="accCutOff">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+
+
+                <div class="tab-pane" id="settings4">
+
+
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>

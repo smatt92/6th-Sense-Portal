@@ -1,0 +1,294 @@
+<div class="panel">
+   <div class="panel-heading">
+
+<style>
+  .ecuTypesXnames:last-of-type  span{
+    display: none;
+  }
+</style>
+
+
+     <button class="btn btn-default btn-xs pull-right"  data-toggle="modal" data-target="#addVehicleType">Create</button>
+      <br><br>
+     <input type="text" placeholder="Search" class="pull-right" ng-model=search></input>
+      <strong>Vehicle Types</strong>
+      <br>
+      <br>
+<p>Items per page</p>
+<select ng-model="pageSize">
+  <option value=5>5</option>
+  <option value=10>10</option>
+  <option value=15>15</option>
+
+</select>
+   </div>
+   <div class="panel-body">
+     <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+       <tr class="bold">
+         <!-- <td style="width:10%">ID</td> -->
+         <td style="width:10%">Name<i class="fa fa-caret-down pull-right" ng-click=sort('name')></i></td>
+         <td style="width:10%">Make<i class="fa fa-caret-down pull-right" ng-click=sort('make')></i></td>
+         <td style="width:10%">Model<i class="fa fa-caret-down pull-right" ng-click=sort('model')></i></td>
+         <td style="width:10%">Brake Pedal<i class="fa fa-caret-down pull-right" ng-click=sort('brake_pedal')></i></td>
+         <td style="width:10%">Accelerator<i class="fa fa-caret-down pull-right" ng-click=sort('accelerator')></i></td>
+         <td style="width:10%">Speed Sensor<i class="fa fa-caret-down pull-right" ng-click=sort('speed_sensor')></i></td>
+         <td style="width:10%">Engine Type<i class="fa fa-caret-down pull-right" ng-click=sort('engine_type')></i></td>
+         <td style="width:10%">ECU Types</td>
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+       </tr>
+      <tr dir-paginate="v in vehiclemodels | filter:search | orderBy: 'done' :reverse | itemsPerPage:pageSize ">
+        <!-- <td style="width:10%">{{v._id}}</td> -->
+         <td style="width:10%">{{v.name}}</td>
+         <td style="width:10%">{{v.make}}</td>
+         <td style="width:10%">{{v.model}}</td>
+         <td style="width:10%">{{v.brake_pedal}}</td>
+         <td style="width:10%">{{v.accelerator}}</td>
+         <td style="width:10%">{{v.speed_sensor}}</td>
+         <td style="width:10%">{{v.engine_type}}</td>
+         <td style="width:10%"><span class="ecuTypesXnames" ng-repeat="x in v.ecu_types">{{x.name}}<span>,</span></span></td>
+         <td><button class="btn btn-success btn-outline" ng-click="putValuesOnEditModal(v._id)"  data-toggle="modal" data-target="#editVehicleType">Edit</button></td>
+         <td><button class="btn btn-danger" data-toggle="modal" data-target="#confirm" ng-click="setDeleteElementId(v._id)" >X</button></td>
+       </tr>
+     </table>
+
+         <dir-pagination-controls
+       max-size="1"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
+
+   </div>
+ </div>
+
+
+
+<!--Create Vehicle -->
+<div id="addVehicleType" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Vehicle Type</h4>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger alert-dismissable" ng-show="error">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Note </strong> {{errorMsg}}
+          <ul>
+              <li ng-repeat='x in errorLists'>{{x}}</li>
+          </ul>
+        </div>
+<form name="vehicleTypeForm">     
+        <div class="form-group">
+          <label>Name</label>
+          <span class="ast">*</span>
+            <input type="text" class="form-control" name="vehicleName" ng-model="vehicleName" placeholder="Name" required>
+<span class="Clienterror" ng-show=" vehicleTypeForm.vehicleMake.$invalid && clicked">The name is required.</span>
+            
+        </div>
+
+        <div class="form-group">
+          <label>Vehicle Make</label><span class="ast">*</span>
+          
+          <select  class="form-control" name="vehicleMake"  ng-model="vehicleMake" ng-change="getVehicleModel();" required ng-options="x.name for x in vehicleMakeOptions">
+            <option value="">Select Vehicle Make</option>
+          </select>
+        
+<span class="Clienterror" ng-show="  vehicleTypeForm.vehicleMake.$invalid && clicked">Vehicle Type Make is required.</span>
+        <!--<input type="text" class="form-control" ng-model="vehicleMake" placeholder="Make">-->
+        </div>
+
+        <div class="form-group">
+          <label>Vehicle Model</label>
+           <span class="ast">*</span>
+           <select  class="form-control"  ng-model="vehicleModel"  name="vehicleModel" ng-options="x for x in vehicleModelOptions">
+             <option value="">Select Vehicle Model</option>
+          </select>
+         
+<span class="Clienterror" ng-show=" vehicleTypeForm.vehicleModel.$invalid  && clicked" >Vehicle Type Model is required.</span>
+   
+        <!--<input type="text" class="form-control" ng-model="vehicleModel" placeholder="Model">-->
+        </div>
+
+        <div class="form-group">
+          <label>Engine Type</label><span class="ast">*</span>
+          <select  class="form-control"  ng-model="vehicleEngineType" ng-options="x for x in vehicleEngineOption">
+           <option value="">Select</option>
+           
+          </select>
+           
+        </div>
+
+        <div class="form-group">
+            <label>BreakPedal</label><span class="ast">*</span>
+            <select  class="form-control"  ng-model="vehicleBreakPedal" ng-options="x for x in vehicleBreakPedalOption" >
+              <option value="">Select</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Accelerator</label><span class="ast">*</span>
+            <select  class="form-control"  ng-model="vehicleaccelerator" ng-options="x for x in vehicleacceleratorOption" id="multi">
+              <option value="">Select</option>
+              
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Speed Sensor</label><span class="ast">*</span>
+            <select class="form-control" ng-model="vehicleSpeed" placeholder="Speed Sensor" ng-options="x for x in vehicleSpeedOption">
+                 <option value="">Select</option>
+            </select>
+        </div>
+
+      <div class="form-group">
+         <label>ECU Types</label><span class="ast">*</span>
+        <ui-select multiple ng-model="selected.value" name="ecuType" required>
+            <ui-select-match>
+               {{$item.name}}
+            </ui-select-match>
+            <ui-select-choices repeat="item in (itemArray[0] | filter: $select.search) track by item._id">
+                <span ng-bind="item.name"></span>
+            </ui-select-choices>
+        </ui-select>
+          <br/>
+<span class="Clienterror" ng-show=" vehicleTypeForm.ecuType.$invalid  && clicked">Vehicle Type Ecu types is required.</span>
+   
+ 
+      </div>
+        <!--<div class="form-group">
+          <label>ECU Types</label>
+          <div ng-dropdown-multi="" extra-settings="dropdownSetting" options="ecuType" selected-model="EcuSelected" checkboxes="true"></div>
+        </div>-->
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" name="save"  ng-click="createVehicleType('vehicleTypeForm')"  >Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+</form>
+   </div>
+
+ </div>
+</div>
+</div>
+
+
+ <div class="modal fade" id="confirm" role="dialog" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger"   data-dismiss="modal" ng-click="deleteVehicleType(DeleteElementId)">Delete</button>
+      </div>
+    </div>
+  </div>
+ </div>
+
+<!--Edit Vehicle -->
+<div id="editVehicleType" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Edit Vehicle Type</h4>
+     </div>
+     <div class="modal-body">
+        <!--<div class="form-group">
+            <input type="text" class="form-control" ng-model="EditVehicleID" placeholder="Id" disabled>
+            </div>-->
+
+            <div class="form-group">
+              <label>Name</label>
+            <input type="text" class="form-control" ng-model="EditvehicleName" placeholder="Name">
+            </div>
+
+            <div class="form-group">
+               <label>Vehicle Make</label>
+                <select  class="form-control"  ng-model="EditvehicleMake" ng-change="EditgetVehicleModel()" ng-options="x.name for x in vehicleMakeOptions">
+            <option value="">Select Vehicle Make</option>
+          </select>
+         
+            <!--<input type="text" class="form-control" ng-model="EditvehicleMake" placeholder="Make">-->
+            </div>
+
+            <div class="form-group">
+               <label>Vehicle Model</label>
+               <select  class="form-control"  ng-model="EditvehicleModel"  ng-options="x for x in vehicleModelOptions">
+             <option value="">Select Vehicle Model</option>
+          </select>
+            <!--<input type="text" class="form-control" ng-model="EditvehicleModel" placeholder="Model">-->
+            </div>
+        <div class="form-group">
+              <label>Engine Type</label>
+              <select  class="form-control"  ng-model="EditvehicleEngineType" >
+               <option>CRS</option>
+               <option>NON-CRS</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>BreakPedal</label>
+              <select  class="form-control"  ng-model="EditvehicleBreakPedal" >
+               <option>FLOOR</option>
+               <option>PENDULUM</option>
+              </select>
+            </div>
+
+       <div class="form-group">
+              <label>Accelerator</label>
+              <select  class="form-control"  ng-model="Editvehicleaccelerator" id="multi">
+               <option>ECU</option>
+               <option>FUEL PUMP</option>
+               <option>CABLE</option>
+              </select>
+            </div>
+
+
+        <div class="form-group">
+              <label>Speed Sensor</label>
+                <select class="form-control" ng-model="EditvehicleSpeed" placeholder="Speed Sensor">
+                    <option>YES</option>
+                    <option>NO</option>
+                </select>
+            </div>
+<label>ECU Types</label>
+             <ui-select multiple ng-model="Editselected.value">
+    <ui-select-match>
+
+       {{$item.name}}
+
+    </ui-select-match>
+    <ui-select-choices repeat="item in (itemArray[0] | filter: $select.search) track by item._id">
+        <span ng-bind="item.name"></span>
+    </ui-select-choices>
+</ui-select>
+
+            <div class="form-group">
+              
+              <div ng-dropdown-multi="" extra-settings="dropdownSetting" options="ecuType" selected-model="Editselected" checkboxes="true"></div>
+            </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="EditVehicleType(EditVehicleID)"  data-dismiss="modal" >Save</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+   </div>
+
+ </div>
+</div>
+</div>
+
+<!-- selec2 -->
+<script type="text/javascript">
+  $(document).on("ready", function(){
+    alert("Asd");
+    $("select").select2();
+  });
+</script>

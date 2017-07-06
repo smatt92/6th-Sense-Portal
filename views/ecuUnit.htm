@@ -1,0 +1,183 @@
+<div class="panel">
+   <div class="panel-heading">
+     <button class="btn btn-default btn-xs pull-right" ng-click="getEcuType();"  data-toggle="modal" data-target="#addEcuUnit">Create</button>
+     <br><br>
+     <input type="text" placeholder="Search" class="pull-right" ng-model=search></input>
+      <strong>6th Sense Units</strong>
+      <br>
+      <br>
+<p>Items per page</p>
+<select ng-model="pageSize">
+  <option value=5>5</option>
+  <option value=10>10</option>
+  <option value=15>15</option>
+
+</select>
+   </div>
+   <div class="panel-body">
+     <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+        <tr class="bold">
+        <!-- <td style="width:10%">ID</td> -->
+         <td style="width:10%">Serial No.<i class="fa fa-caret-down pull-right" ng-click=sort('serial_no')></i></td>
+         <td style="width:10%">Version No<i class="fa fa-caret-down pull-right" ng-click=sort('version_no')></i></td>
+         <td style="width:10%">ECU Type<i class="fa fa-caret-down pull-right" ng-click=sort('ecu_type.name')></i></td>
+         <td style="width:10%">Manufactured on<i class="fa fa-caret-down pull-right" ng-click=sort('manufactured_on')></i></td>
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+
+        </tr>
+        <tr dir-paginate="v in ecuUnits | filter:search | orderBy: 'done' :reverse | itemsPerPage:pageSize ">
+        <!-- <td style="width:10%">{{v._id}}</td> -->
+         <td style="width:10%">{{v.serial_no}}</td>
+         <td style="width:10%">{{v.version_no}}</td>
+         <td style="width:10%">{{v.ecu_type.name}}</td>
+         <td style="width:20%">{{v.manufactured_on |date:format:"dd:M:YYYY"}}</td>
+         <td><button class="btn btn-success btn-outline" ng-click="getDetails(v._id);"  data-toggle="modal" data-target="#EditEcuUnit" >Edit</button></td>
+         <td><button class="btn btn-danger" data-toggle="modal" data-target="#confirm" ng-click="setDeleteElementId(v._id);" >X</button></td>
+        </tr>
+     </table>
+          <dir-pagination-controls 
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" > 
+    </dir-pagination-controls>
+
+   </div>
+ </div>
+
+<div id="addEcuUnit" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Create ECU Unit</h4>
+     </div>
+     <div class="modal-body">
+            <div class="alert alert-danger alert-dismissable" ng-show="error">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Note </strong> {{errorMsg}}
+              <ul>
+                  <li ng-repeat='x in errorLists'>{{x}}</li>
+              </ul>
+            </div>
+
+          <form name="ecuUnitForm">
+            <div class="form-group">
+            <label>Serial No</label><span class="ast">*</span>
+            <input type="text" name="serialNo" class="form-control" ng-model="serialNo" placeholder="Serial No" required>
+             
+            <span class="Clienterror" ng-show="ecuUnitForm.serialNo.$pristine && ecuUnitForm.serialNo.$invalid && clicked">Serial No is required.</span>
+   
+            </div>
+
+
+            <div class="form-group">
+            <label>Version No</label><span class="ast">*</span>
+            <input type="text" class="form-control" name="version" ng-model="vrNo" placeholder="Version No" required>
+             
+            <span class="Clienterror" ng-show="ecuUnitForm.version.$pristine && ecuUnitForm.version.$invalid && clicked">version No is required.</span>
+   
+            </div>
+
+            <div class="form-group">
+            <label>ECU Type</label><span class="ast">*</span>
+              <select class="form-control" name="ecuType" ng-model="ecuType" required>
+                <option value="">Select ECU Types</option>
+                <option ng-repeat="e in ecuTypes" value="{{e._id}}">{{e.name}}</option>
+              </select>
+              
+             
+            <span class="Clienterror" ng-show="ecuUnitForm.ecuType.$pristine && ecuUnitForm.ecuType.$invalid && clicked">ECU Types is required.</span>
+   
+            </div>
+
+            <div class="form-group">
+            <label>Manufactured on</label><span class="ast">*</span>
+            <input type="date" class="form-control" ng-model="manufacturedOn" placeholder="Manufactured on">
+            </div>
+
+
+
+     <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="CreateEcuUnit('ecuUnitForm')" >Save</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+            </form>
+   </div>
+
+ </div>
+</div>
+
+
+</div>
+
+
+ <div class="modal fade" id="confirm" role="dialog" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger"   data-dismiss="modal" ng-click="deleteEcuUnit(DeleteElementId)">Delete</button>
+      </div>
+    </div>
+  </div>
+ </div>
+
+
+
+<div id="EditEcuUnit" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Edit ECU Unit</h4>
+     </div>
+     <div class="modal-body">
+        <!--<div class="form-group">
+            <label>id</label>
+            <input type="text" class="form-control" ng-model="EditId" disabled>
+            </div>-->
+
+            <div class="form-group">
+            <label>Serial No</label>
+            <input type="text" class="form-control" ng-model="EditserialNo" placeholder="Serial No">
+            </div>
+
+
+            <div class="form-group">
+            <label>Version No</label>
+            <input type="text" class="form-control" ng-model="EditvrNo" placeholder="Version No">
+            </div>
+
+            <div class="form-group">
+            <label>ECU Type</label>
+              <select class="form-control" ng-model="EditecuType">
+                <option ng-repeat="e in ecuTypes" value="{{e._id}}">{{e.name}}</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+            <label>Manufactured on</label>
+            <input type="date" class="form-control"  ng-model="EditmanufacturedOn" placeholder="Manufactured on">
+            </div>
+
+
+
+     <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="updateEcuUnit()"  data-dismiss="modal" >Save</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+   </div>
+
+ </div>
+</div>
+
+
+</div>

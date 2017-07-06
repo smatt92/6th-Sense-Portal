@@ -1,0 +1,228 @@
+<div class="panel">
+   <div class="panel-heading">
+
+      
+     <button class="btn btn-default btn-xs pull-right"   data-toggle="modal" data-target="#addVehicle">Create</button>
+     <br><br>
+     <input type="text" class="pull-right" placeholder="Search" ng-model=search></input>  
+      <strong>Vehicles</strong>
+      <br>
+      <br>
+<p>Items per page</p>
+<select ng-model="pageSize">
+  <option value=5>5</option>
+  <option value=10>10</option>
+  <option value=15>15</option>
+
+</select>
+   </div>
+   <div class="panel-body">
+     <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+        <tr class="bold">
+        <!-- <td style="width:10%">ID</td> -->
+         <td style="width:10%">Vehicle No.<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_no')"></i></td>
+         <td style="width:10%">Vehicle Type<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_type.name')"></i></td>
+         <td style="width:10%">Registration No.<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('registration_no')"></i></td>
+         <td style="width:10%">ECU Unit<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_no')"></i></td>
+          <td style="width:10%">Device Unit<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_no')"></i></td>
+         <td style="width:10%">Edit</td>
+         <td style="width:10%">Delete</td>
+
+        </tr>
+        <tr dir-paginate="v in vehicles | filter:search | orderBy: 'done' :reverse | itemsPerPage:pageSize ">
+        <!-- <td style="width:10%">{{v._id}}</td> -->
+        <td style="width:10%">{{v.vehicle_no}}</td>
+        <td style="width:10%">{{v.vehicle_type.name}}</td>
+        <td style="width:10%">{{v.registration_no}}</td>
+        <td style="width:10%">{{v.ecu_unit.serial_no}}</td>
+        <td style="width:10%">{{v.device_unit.serial_no}}</td>
+         <td><button class="btn btn-success btn-outline" ng-click="getVehicleData(v._id);"  data-toggle="modal" data-target="#editVehicle" >Edit</button></td>
+         <td><button class="btn btn-danger" data-toggle="modal" data-target="#confirm"  ng-click="setDeleteElementId(v._id);" >X</button></td>
+        </tr>
+     </table>
+
+          <dir-pagination-controls 
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" > 
+    </dir-pagination-controls>      
+   </div>
+ </div>
+
+
+ <div class="modal fade" id="confirm" role="dialog" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger"   data-dismiss="modal" ng-click="deleteVehicle(DeleteElementId)">Delete</button>
+      </div>
+    </div>
+  </div>
+ </div>
+
+<div id="addVehicle" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Create Vehicle</h4>
+     </div>
+     
+     <div class="modal-body">
+            <div class="alert alert-danger alert-dismissable" ng-show="error">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Note </strong> {{errorMsg}}
+              <ul>
+                  <li ng-repeat='x in errorLists'>{{x}}</li>
+              </ul>
+            </div>
+
+          <form name="vehicleCreateForm">
+            <div class="form-group">
+            <label>Vehicle No</label> <span class="ast">*</span>
+            <input type="text" name="vehicle" class="form-control" ng-model="vehicleNo" placeholder="Vehicle No" required>
+            
+            <span class="Clienterror" ng-show="vehicleCreateForm.vehicle.$invalid && clicked">Vehicle No is required.</span>
+   
+            </div>
+
+
+            <div class="form-group">
+            <label>Vehicle Type</label>  <span class="ast">*</span>
+            <select class="form-control" name="vehicleType" ng-model="vehicleType" placeholder="Vehicle Type" required ng-options="x.name for x in vehicleTypes ">
+                <option value="">Select</option>
+            </select>
+           
+            <span class="Clienterror" ng-show="clicked && vehicleCreateForm.vehicleType.$invalid">version No is required.</span>
+   
+            </div>
+
+             <div class="form-group">
+            <label>Registeration No</label><span class="ast">*</span>
+            <input type="text" name="regNo" class="form-control" ng-model="registrationNo" placeholder="Registration No" required>
+             
+            <span class="Clienterror" ng-show="clicked && vehicleCreateForm.regNo.$invalid">Registration No is required.</span>
+   
+            </div>
+
+            <div class="form-group">
+              <label>Select ECU Unit</label> <span class="ast">*</span>
+            <ui-select  ng-model="ecuTypes.value" name="ecuType" required theme="bootstrap">
+                        <ui-select-match placeholder="Select ECU Unit">
+                            {{$select.selected.serial_no}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in (EcuitemArray[0] | filter: $select.search) track by item._id">
+                            <span ng-bind="item.serial_no"></span>
+                        </ui-select-choices>
+            </ui-select>
+            <span class="Clienterror" ng-show="clicked && vehicleCreateForm.ecuType.$invalid">ECU Unit  is required.</span>
+            </div>
+ <div class="form-group">
+   <label>Select Device Unit</label> <span class="ast">*</span>
+            <ui-select  ng-model="deviceUnit.value" name="deviceUnit" required theme="bootstrap">
+                        <ui-select-match placeholder="Select Device Unit">
+                            {{$select.selected.serial_no}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in (DeviceArray[0] | filter: $select.search) track by item._id">
+                            <span ng-bind="item.serial_no"></span>
+                        </ui-select-choices>
+            </ui-select>
+            <span class="Clienterror" ng-show="clicked && vehicleCreateForm.deviceUnit.$invalid">Device Unit  is required.</span>
+            
+            </div>
+
+
+     <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="CreateDriver('vehicleCreateForm')"   >Save</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+            </form>
+   </div>
+
+ </div>
+</div>
+
+
+</div>
+
+
+
+
+<div id="editVehicle" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Edit Vehicle</h4>
+     </div>
+     <div class="modal-body">
+        <!--<div class="form-group">
+            <label>id</label>
+            <input type="text" class="form-control" ng-model="EditValues._id" disabled>
+            </div>-->
+
+            <div class="form-group">
+            <label>Vehicle No</label>
+            <input type="text" class="form-control" ng-model="EditValues.vehicle_no" placeholder="Vehicle No">
+            </div>
+  <div class="form-group">
+            <label>Vehicle Type</label><span class="ast">*</span>
+            <select class="form-control" name="version" ng-model="editSelectedVehicle._id" placeholder="Vehicle Type" required ng-options="x._id as x.name for x in vehicleTypes ">
+               
+            </select>
+             
+            <span class="Clienterror" ng-show="vehicleCreateForm.version.$touched && ecuUnitForm.version.$invalid">version No is required.</span>
+   
+            </div>
+
+             <div class="form-group">
+            <label>Registeration No</label><span class="ast">*</span>
+            <input type="text" name="regNo" class="form-control" ng-model="EditValues.registration_no" placeholder="Registration No" required>
+             
+            <span class="Clienterror" ng-show="vehicleCreateForm.regNo.$touched && vehicleCreateForm.regNo.$invalid">Registration No is required.</span>
+   
+            </div>
+
+            <div class="form-group"><label>ECU Units</label><span class="ast">*</span>
+            <ui-select  ng-model="EditValues.ecu_unit" name="ecuType" required theme="bootstrap">
+                        <ui-select-match placeholder="Select ECU Unit">
+                            {{$select.selected.serial_no}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in (EcuitemArray[0] | filter: $select.search) track by item._id">
+                            <span ng-bind="item.serial_no"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                    <span class="Clienterror" ng-show="vehicleCreateForm.ecuType.$touched && vehicleCreateForm.ecuType.$invalid">Registration No is required.</span>
+            </div>
+ <div class="form-group"><label>Device Units</label><span class="ast">*</span>
+            <ui-select  ng-model="EditValues.device_unit" name="deviceUnit" required theme="bootstrap">
+                        <ui-select-match placeholder="Select Device Unit">
+                            {{$select.selected.serial_no}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in (DeviceArray[0] | filter: $select.search) track by item._id">
+                            <span ng-bind="item.serial_no"></span>
+                        </ui-select-choices>
+                    </ui-select>
+            </div>
+
+
+
+     <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="editVehicle()"  data-dismiss="modal" >Save</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+   </div>
+
+ </div>
+</div>
+
+
+</div>
