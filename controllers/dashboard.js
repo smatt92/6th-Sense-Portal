@@ -1,3 +1,4 @@
+//Controller for Dashboard
 app.controller("dashboardCtrl", function ($scope,$http,$constants) {
 
 $scope.ecuTypeNumbers = 0;
