@@ -172,7 +172,7 @@ $scope.EditDriver = function(id,form){
             $http.put($constants.endPointInUse+"/api/companies/"+compId+"/drivers/"+id,json,{headers:{'Content-Type':'application/json','Authorization': auth}})
                 .then(function(response){
                     console.log(response.data);
-                    
+                    angular.element("#editDriver").modal("hide");
                 })
                 .catch(function(response){
                     console.log(response.data);
@@ -212,7 +212,7 @@ $scope.createDriver = function(form){
                     license_no : $scope.driverLicNo
                 }
         }
-        angular.element("#addDriver").modal("hide");
+        
         var autho = localStorage.getItem("sixthsense.token");
     var auth = "Bearer "+autho;
 
@@ -221,6 +221,7 @@ $scope.createDriver = function(form){
          .then(function(response){
              console.log(response.data);
             getDrivers();
+            angular.element("#addDriver").modal("hide");
          })
          .catch(function(response){
              console.log(response.data);

@@ -58,10 +58,24 @@ var admin = class{
 var adminDetails = new admin();
 
 $scope.saveAdmin= function(){
+  var isEmailPresent=0;
 var adminDetails = new admin($scope.adminEmail,$scope.adminName);
   //admin.username = $scope.adminEmail;
-  $scope.adminArr.push(adminDetails);
-  console.log(angular.toJson($scope.adminArr));
+  angular.forEach($scope.adminArr,function(val,index){
+    if(val.username==$scope.adminEmail) {
+      isEmailPresent = 1;
+    }
+  });
+
+  if(isEmailPresent == 0){
+      $scope.adminArr.push(adminDetails);
+      console.log(angular.toJson($scope.adminArr));
+  }
+  else{
+    angular.element("#adminEmail").next().text("Email already Present.");
+    $scope['CompanyAdminDetails']['email'].$invalid = true;
+  }
+  
 }
 
 $scope.deleteAdmin = function(id){
@@ -108,6 +122,10 @@ console.log("ASd");
 $scope.next1 = function(form){
 
 $scope.clicked1=true;
+// if($scope.phoneNumber < 8 || $scope.phoneNumber >8){
+// angular.element("#phoneNumber").next().text("Phone Number should be of 8 digits only");
+// $scope[form]["phoneNumber"].$invalid= true;
+// }
   if($scope[form].$valid){
 $("#atab2").removeClass("disabled");
 $("#atab2").addClass("active");
@@ -343,7 +361,12 @@ console.log(JSON.stringify(json));
         .then(function(response){
           console.log(response.data);
           location.href="index.html#!/companyWizard";
-        });
+        })
+        .catch(function(response){
+          angular.element("#errorModal").modal("show");
+          $scope.errorMessages = response.data.msg_list;
+          
+        })
 
 
 }

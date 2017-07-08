@@ -3,7 +3,7 @@ var SignInapp = angular.module("SixSenseSignIn", ['ngRoute','ui.select', 'ngSani
 
 
 
-SignInapp.controller("SignIn", function ($scope,$http) {
+SignInapp.controller("SignIn", function ($scope,$http,$constants) {
     
     //On Submit Button Click
     $scope.submit = function () {
@@ -17,7 +17,7 @@ SignInapp.controller("SignIn", function ($scope,$http) {
         }
 
     //Calling the API
-        var login=$http.post("http://ec2-13-126-61-4.ap-south-1.compute.amazonaws.com:3000/auth/signin",loginjson)
+        var login=$http.post($constants.endPointInUse+"/auth/signin",loginjson)
                 .then(function(response){
                     localStorage.setItem("sixthsense.token",response.data.token);
                     localStorage.setItem("userName",response.data.name);

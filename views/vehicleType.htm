@@ -33,7 +33,7 @@
          <td style="width:10%">Accelerator<i class="fa fa-caret-down pull-right" ng-click=sort('accelerator')></i></td>
          <td style="width:10%">Speed Sensor<i class="fa fa-caret-down pull-right" ng-click=sort('speed_sensor')></i></td>
          <td style="width:10%">Engine Type<i class="fa fa-caret-down pull-right" ng-click=sort('engine_type')></i></td>
-         <td style="width:10%">ECU Types</td>
+         <td style="width:10%">System Types</td>
          <td style="width:10%">Edit</td>
          <td style="width:10%">Delete</td>
        </tr>
@@ -121,7 +121,7 @@
         </div>
 
         <div class="form-group">
-            <label>BreakPedal</label><span class="ast">*</span>
+            <label>Brake Pedal</label><span class="ast">*</span>
             <select  class="form-control"  ng-model="vehicleBreakPedal" ng-options="x for x in vehicleBreakPedalOption" >
               <option value="">Select</option>
 
@@ -144,7 +144,7 @@
         </div>
 
       <div class="form-group">
-         <label>ECU Types</label><span class="ast">*</span>
+         <label>System Types</label><span class="ast">*</span>
         <ui-select multiple ng-model="selected.value" name="ecuType" required>
             <ui-select-match>
                {{$item.name}}
@@ -154,7 +154,7 @@
             </ui-select-choices>
         </ui-select>
           <br/>
-<span class="Clienterror" ng-show=" vehicleTypeForm.ecuType.$invalid  && clicked">Vehicle Type Ecu types is required.</span>
+<span class="Clienterror" ng-show=" vehicleTypeForm.ecuType.$invalid  && clicked">System type is required.</span>
    
  
       </div>
@@ -235,7 +235,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label>BreakPedal</label>
+              <label>Brake Pedal</label>
               <select  class="form-control"  ng-model="EditvehicleBreakPedal" >
                <option>FLOOR</option>
                <option>PENDULUM</option>
@@ -245,7 +245,7 @@
        <div class="form-group">
               <label>Accelerator</label>
               <select  class="form-control"  ng-model="Editvehicleaccelerator" id="multi">
-               <option>ECU</option>
+               <option>SYSTEM</option>
                <option>FUEL PUMP</option>
                <option>CABLE</option>
               </select>
@@ -259,7 +259,7 @@
                     <option>NO</option>
                 </select>
             </div>
-<label>ECU Types</label>
+<label>System Types</label>
              <ui-select multiple ng-model="Editselected.value">
     <ui-select-match>
 
