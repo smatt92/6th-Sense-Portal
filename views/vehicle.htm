@@ -23,8 +23,8 @@
          <td style="width:10%">Vehicle No.<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_no')"></i></td>
          <td style="width:10%">Vehicle Type<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_type.name')"></i></td>
          <td style="width:10%">Registration No.<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('registration_no')"></i></td>
-         <td style="width:10%">ECU Unit<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_no')"></i></td>
-          <td style="width:10%">Device Unit<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_no')"></i></td>
+         <td style="width:10%">6th Sense Unit<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_no')"></i></td>
+          <td style="width:10%">Mobile Unit<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_no')"></i></td>
          <td style="width:10%">Edit</td>
          <td style="width:10%">Delete</td>
 
@@ -114,28 +114,28 @@
             </div>
 
             <div class="form-group">
-              <label>Select ECU Unit</label> <span class="ast">*</span>
+              <label>Select 6th Sense Unit</label> <span class="ast">*</span>
             <ui-select  ng-model="ecuTypes.value" name="ecuType" required theme="bootstrap">
-                        <ui-select-match placeholder="Select ECU Unit">
+                        <ui-select-match placeholder="Select 6th Sense Unit">
                             {{$select.selected.serial_no}}
                         </ui-select-match>
                         <ui-select-choices repeat="item in (EcuitemArray[0] | filter: $select.search) track by item._id">
                             <span ng-bind="item.serial_no"></span>
                         </ui-select-choices>
             </ui-select>
-            <span class="Clienterror" ng-show="clicked && vehicleCreateForm.ecuType.$invalid">ECU Unit  is required.</span>
+            <span class="Clienterror" ng-show="clicked && vehicleCreateForm.ecuType.$invalid">6th Sense Unit is required.</span>
             </div>
  <div class="form-group">
-   <label>Select Device Unit</label> <span class="ast">*</span>
+   <label>Select Mobile Unit</label> <span class="ast">*</span>
             <ui-select  ng-model="deviceUnit.value" name="deviceUnit" required theme="bootstrap">
-                        <ui-select-match placeholder="Select Device Unit">
+                        <ui-select-match placeholder="Select Mobile Unit">
                             {{$select.selected.serial_no}}
                         </ui-select-match>
                         <ui-select-choices repeat="item in (DeviceArray[0] | filter: $select.search) track by item._id">
                             <span ng-bind="item.serial_no"></span>
                         </ui-select-choices>
             </ui-select>
-            <span class="Clienterror" ng-show="clicked && vehicleCreateForm.deviceUnit.$invalid">Device Unit  is required.</span>
+            <span class="Clienterror" ng-show="clicked && vehicleCreateForm.deviceUnit.$invalid">Mobile Unit  is required.</span>
             
             </div>
 
@@ -191,7 +191,7 @@
    
             </div>
 
-            <div class="form-group"><label>ECU Units</label><span class="ast">*</span>
+            <div class="form-group"><label>6th Sense Unit</label><span class="ast">*</span>
             <ui-select  ng-model="EditValues.ecu_unit" name="ecuType" required theme="bootstrap">
                         <ui-select-match placeholder="Select ECU Unit">
                             {{$select.selected.serial_no}}
@@ -202,7 +202,7 @@
                     </ui-select>
                     <span class="Clienterror" ng-show="vehicleCreateForm.ecuType.$touched && vehicleCreateForm.ecuType.$invalid">Registration No is required.</span>
             </div>
- <div class="form-group"><label>Device Units</label><span class="ast">*</span>
+ <div class="form-group"><label>  Mobile Unit</label><span class="ast">*</span>
             <ui-select  ng-model="EditValues.device_unit" name="deviceUnit" required theme="bootstrap">
                         <ui-select-match placeholder="Select Device Unit">
                             {{$select.selected.serial_no}}

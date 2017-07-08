@@ -1,4 +1,11 @@
-
+<style>
+    input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+    </style>
 <div id="createPopup" class="main-content checkbo" style="min-height: 60vh">
         <div class="box-tab justified" id="rootwizard">
             <ul class="nav nav-tabs" style="background-color: #fff; ">
@@ -20,7 +27,7 @@
                             <form name="companyDetails">
                                 <div class="col-sm-5">
                                     <div class="form-group">
-                                        <label class="col-sm-5 control-label">Name</label>
+                                        <label class="col-sm-5 control-label">Company Name</label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" ng-model="companyName" name="companyName" required>
                                             <span class="Clienterror" ng-show="(companyDetails.companyName.$invalid) && clicked1 ">Field is required.</span>
@@ -47,12 +54,12 @@
                                         <div class="col-sm-7 form-inline" >
                                             <div class="row">
                                                 <div class="col col-sm-3"-->
-                                                    <input type="text" class="form-control col-sm-2" style="max-width: 45px !important" ng-model="phoneCode" move-next-on-maxlength maxlength=3>
+                                                    <input type="number" class="form-control col-sm-2"  style="max-width: 45px !important" ng-model="phoneCode" move-next-on-maxlength maxlength=3>
                                                 </div>
                                             <!--/div>
                                             <div class="row"-->
                                                 <div class="col col-sm-9">
-                                                    <input type="text" class="form-control col-sm-6" ng-model="phoneNumber" id="" name="phoneNumber" required>
+                                                    <input type="number" class="form-control col-sm-6"  ng-model="phoneNumber" id="phoneNumber" name="phoneNumber" required>
                                                     <span class="Clienterror" ng-show="(companyDetails.phoneNumber.$invalid) && clicked1">Field is required.</span>
                                                 </div>
                                             </div>
@@ -104,7 +111,7 @@
                                 <div class="row">
                                 <div class="col-sm-4">
                                     <label class="col-sm-4 control-label">Email Address</label>
-                                    <input type="email" class="form-control" name="email" required  ng-model="adminEmail" >
+                                    <input type="email" id="adminEmail" class="form-control" name="email" required  ng-model="adminEmail" >
                                     <p ng-show="CompanyAdminDetails.email.$invalid && !CompanyAdminDetails.email.$pristine" class="Clienterror">Enter a valid email.</p>
                                 </div>
                             </div>
@@ -212,7 +219,7 @@
                                             <label class="control-label">Alarm Threshold</label>
                                             <div>
                                                 <input type="text"  class="form-control" ng-required="casChecked" ng-disabled="!casChecked" ng-model="alarmTh" name="alarmTh">
-                                                <p ng-show="features.alarmTh.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                                <p ng-show="features.alarmTh.$invalid && checked5 && !casChecked" class="Clienterror">Field is required.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -221,7 +228,7 @@
                                             <label class="control-label">Brake Threshold</label>
                                             <div>
                                                 <input type="text" class="form-control"  ng-required="casChecked" ng-disabled="!casChecked" ng-model="brakeTh" name="brakeTh">
-                                                <p ng-show="features.brakeTh.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                                <p ng-show="features.brakeTh.$invalid && checked5 && !casChecked" class="Clienterror">Field is required.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -230,7 +237,7 @@
                                             <label class="control-label">Brake Speed</label>
                                             <div>
                                                 <input type="text" class="form-control"  ng-required="casChecked"  ng-disabled="!casChecked" ng-model="brakeSpeed" name="brakeSpeed">
-                                                <p ng-show="features.brakeSpeed.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                                <p ng-show="features.brakeSpeed.$invalid && checked5 && !casChecked" class="Clienterror">Field is required.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -257,7 +264,7 @@
                                         <label class="control-label">Switch Interval</label>
                                         <div>
                                             <input type="text" ng-required="sleepAlertChecked"  class="form-control" ng-disabled="!sleepAlertChecked" ng-model="SwitchInterval" name="SwitchInterval">
-                                            <p ng-show="features.SwitchInterval.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                            <p ng-show="features.SwitchInterval.$invalid && checked5 && !sleepAlertChecked" class="Clienterror">Field is required.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +273,7 @@
                                         <label class="control-label">Switch On</label>
                                         <div>
                                             <input type="text" class="form-control" ng-required="sleepAlertChecked" ng-disabled="!sleepAlertChecked"  ng-model="switchOn" name="switchOn">
-                                            <p ng-show="features.switchOn.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                            <p ng-show="features.switchOn.$invalid && checked5 && !sleepAlertChecked" class="Clienterror">Field is required.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +282,7 @@
                                         <label class="control-label">Switch Off</label>
                                         <div>
                                             <input type="text" class="form-control" ng-required="sleepAlertChecked" ng-disabled="!sleepAlertChecked" ng-model="switchOff" name="switchOff">
-                                            <p ng-show="features.switchOff.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                            <p ng-show="features.switchOff.$invalid && checked5 && !sleepAlertChecked" class="Clienterror">Field is required.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -304,7 +311,7 @@
                                                 <option>YES</option>
                                                 <option>NO</option>
                                             </select>
-                                            <p ng-show="features.cut.$invalid && checked5" class="Clienterror">Field is required.</p>
+                                            <p ng-show="features.cut.$invalid && checked5 && !tpmsChecked" class="Clienterror">Field is required.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -565,8 +572,40 @@
                 </div>
             </div>
         </div>
+    </div>
 </div>
+<div id="errorModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+        <h4 class="modal-title">Please Check the following Error</h4>
+      </div>
+      <div class="modal-body">
+          <ol>
+             
+                <li ng-repeat="x in errorMessages"> 
+                    <div class="alert alert-danger">                
+                     {{x}}
+                    </div>
+                </li>
+           
+            </ol>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+
+
+
 <script>
 
 </script>

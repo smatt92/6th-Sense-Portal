@@ -37,7 +37,7 @@ $scope.deleteDeviceUnit = function(id){
    var deleteDevice = $http.delete($constants.endPointInUse+"/api/devices/"+id,{headers:{'Content-Type':'application/json','Authorization': auth}});
    deleteDevice.then(function(response){
      console.log(response);
-getDeviceUnit();
+          getDeviceUnit();
    });
    deleteDevice.catch(function(response){
        console.log(response.data);

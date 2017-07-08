@@ -21,18 +21,22 @@
        <tr class="bold">
          <!-- <td style="width:10%">ID</td> -->
          <td style="width:10%"  >Name<i class="fa fa-caret-down pull-right" ng-click=sort('name')></i></td>
-         <td style="width:10%">Analog Switch<i class="fa fa-caret-down pull-right" ng-click=sort('analog_switch')></i></td>
-         <td style="width:10%">Valve 2<i class="fa fa-caret-down pull-right" ng-click=sort('cylinder_2')></i></td>
          <td style="width:10%">CAN<i class="fa fa-caret-down pull-right" ng-click=sort('can')></i></td>
+         <td style="width:10%">Valve 2<i class="fa fa-caret-down pull-right" ng-click=sort('cylinder_2')></i></td>
+         <td style="width:10%">Analog Switch<i class="fa fa-caret-down pull-right" ng-click=sort('analog_switch')></i></td>
+         
+         
          <td style="width:10%">Edit</td>
          <td style="width:10%">Delete</td>
        </tr>
       <tr dir-paginate="e in ecuTypes | filter:search | orderBy: 'done' :reverse | itemsPerPage:pageSize" >
         <!-- <td style="width:10%">{{e._id}}</td> -->
          <td style="width:10%">{{e.name}}</td>
+          <td style="width:10%">{{e.can}}</td>
+          <td style="width:10%">{{e.cylinder_2}}</td>
          <td style="width:10%">{{e.analog_switch}}</td>
-         <td style="width:10%">{{e.cylinder_2}}</td>
-         <td style="width:10%">{{e.can}}</td>
+         
+        
          <td><button data-toggle="modal" data-target="#editEcuType" ng-click="AddDataToEdit(e._id)" class="btn btn-success btn-outline">Edit</button></td>
          <td><button class="btn btn-danger" data-toggle="modal" ng-click="setDeleteElementId(e._id)" data-target="#confirm" >X</button></td>
        </tr>
