@@ -20,8 +20,8 @@
         <!-- <td style="width:10%">ID</td> -->
          <td style="width:10%">Serial No.<i class="fa fa-caret-down pull-right" ng-click=sort('serial_no')></i></td>
          <td style="width:10%">Version No<i class="fa fa-caret-down pull-right" ng-click=sort('version_no')></i></td>
-         <td style="width:10%">ECU Type<i class="fa fa-caret-down pull-right" ng-click=sort('ecu_type.name')></i></td>
-         <td style="width:10%">Assembled and Tested On<i class="fa fa-caret-down pull-right" ng-click=sort('manufactured_on')></i></td>
+         <td style="width:10%">System Type<i class="fa fa-caret-down pull-right" ng-click=sort('ecu_type.name')></i></td>
+         <td style="width:10%">Assembled on<i class="fa fa-caret-down pull-right" ng-click=sort('manufactured_on')></i></td>
          <td style="width:10%">Edit</td>
          <td style="width:10%">Delete</td>
 
@@ -50,7 +50,7 @@
    <div class="modal-content">
      <div class="modal-header">
        <button type="button" class="close" data-dismiss="modal">&times;</button>
-       <h4 class="modal-title">Create ECU Unit</h4>
+       <h4 class="modal-title">Create 6th Sense Unit</h4>
      </div>
      <div class="modal-body">
             <div class="alert alert-danger alert-dismissable" ng-show="error">
@@ -80,20 +80,20 @@
             </div>
 
             <div class="form-group">
-            <label>ECU Type</label><span class="ast">*</span>
+            <label>System Type</label><span class="ast">*</span>
               <select class="form-control" name="ecuType" ng-model="ecuType" required>
-                <option value="">Select ECU Types</option>
+                <option value="">Select System Types</option>
                 <option ng-repeat="e in ecuTypes" value="{{e._id}}">{{e.name}}</option>
               </select>
               
              
-            <span class="Clienterror" ng-show="ecuUnitForm.ecuType.$pristine && ecuUnitForm.ecuType.$invalid && clicked">ECU Types is required.</span>
+            <span class="Clienterror" ng-show="ecuUnitForm.ecuType.$pristine && ecuUnitForm.ecuType.$invalid && clicked">System Types is required.</span>
    
             </div>
 
             <div class="form-group">
-            <label>Assembled and Tested On</label><span class="ast">*</span>
-            <input type="date" class="form-control" ng-model="manufacturedOn" placeholder="Manufactured on">
+            <label>Assembled On</label><span class="ast">*</span>
+            <input type="date" class="form-control datepicker" ng-model="manufacturedOn" placeholder="Manufactured on">
             </div>
 
 
@@ -165,7 +165,7 @@
 
             <div class="form-group">
             <label>Assembled and Tested On</label>
-            <input type="date" class="form-control"  ng-model="EditmanufacturedOn" placeholder="Manufactured on">
+            <input type="date" class="form-control"   ng-model="EditmanufacturedOn" placeholder="Manufactured on">
             </div>
 
 

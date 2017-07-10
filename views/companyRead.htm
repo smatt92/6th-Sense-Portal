@@ -40,7 +40,7 @@
          <td style="width:10%">{{c.director_name}}</td>
          <td style="width:10%">{{c.director_phone_no}}</td>
          <td><button class="btn btn-success btn-outline" ng-click="AddDatatoUpdate(c)" >Edit</button></td>
-         <td><button class="btn btn-danger"  ng-click="deleteCompany(c)" >X</button></td>
+         <td><button class="btn btn-danger" data-toggle="modal" data-target="#delc" >X</button></td>
 
        </tr>
      </table>
@@ -51,6 +51,23 @@
     </dir-pagination-controls> 
 </div>
 
+ <div class="modal fade" id="delc" role="dialog" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger"   data-dismiss="modal" ng-click="deleteCompany(c)">Delete</button>
+      </div>
+    </div>
+  </div>
+ </div>
 
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">

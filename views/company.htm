@@ -13,9 +13,9 @@ input::-webkit-inner-spin-button {
                 </li>
                 <li class="disabled"><a  class="disabled" id="atab2" data-target="#tab2" data-toggle="tab"  >2. Add Admin</a>
                 </li>
-                <li class="disabled"><a class="disabled" id="atab3" data-target="#tab3" data-toggle="tab" >3. Add ECU</a>
+                <li class="disabled"><a class="disabled" id="atab3" data-target="#tab3" data-toggle="tab" >3. Assign 6th Sense Units</a>
                 </li>
-                <li  class="disabled"><a class="disabled" id="atab4" data-target="#tab4" data-toggle="tab"  >4. Add Device</a>
+                <li  class="disabled"><a class="disabled" id="atab4" data-target="#tab4" data-toggle="tab"  >4. Assign Mobile Units</a>
                 </li>
                 <li class="disabled"><a class="disabled" id="atab5" data-target="#tab5" data-toggle="tab" >5. Add Features</a>
                 </li>
@@ -154,7 +154,7 @@ input::-webkit-inner-spin-button {
                 </div>
                 <div class="tab-pane" id="tab3">
                     <form name="ecuForm">
-                        <h3>Select ECU Units</h3>
+                        <h3>Please select 6th Sense Units</h3>
                         <br/>
                         <ui-select multiple ng-model="ecuTypes.value" name="ecuTypes" required>
                             <ui-select-match>
@@ -164,7 +164,7 @@ input::-webkit-inner-spin-button {
                                 <span ng-bind="item.serial_no"></span>
                             </ui-select-choices>
                         </ui-select>
-                        <p ng-show="ecuForm.ecuTypes.$invalid && checked3" class="Clienterror">Please Select The ECU Type.</p>
+                        <p ng-show="ecuForm.ecuTypes.$invalid && checked3" class="Clienterror">Please select 6th Sense Units</p>
                         <div class="row btnHolder text-right">
                             <div class="col-md-3 pull-right">
                               
@@ -177,7 +177,7 @@ input::-webkit-inner-spin-button {
                 </div>
 
                 <div class="tab-pane" id="tab4">
-                    <h3>Select Device Units </h3>
+                    <h3>Please Select Mobile Units</h3>
                     <br/>
                     <form name="deviceForm">
                         <ui-select multiple ng-model="deviceUnit.value" name="deviceUnit"  required>
@@ -188,7 +188,7 @@ input::-webkit-inner-spin-button {
                                 <span ng-bind="item.serial_no"></span>
                             </ui-select-choices>
                         </ui-select>
-                        <p ng-show="deviceForm.deviceUnit.$invalid && checked4" class="Clienterror">Please Select The Device Type.</p>
+                        <p ng-show="deviceForm.deviceUnit.$invalid && checked4" class="Clienterror">Please Select Mobile Units</p>
                         <div class="row btnHolder text-right">
                             <div class="col-md-3 pull-right">
                      
