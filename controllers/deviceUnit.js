@@ -3,7 +3,7 @@ app.controller("deviceUnitctrl",function($scope,$http,$constants){
 
 //Selection Options
 
-$scope.SimCarrierOptions = ["AIRTEL","BSEL","VODAFONE","IDEA"];
+$scope.SimCarrierOptions = ["AIRTEL","BSNL","VODAFONE","IDEA"];
 $scope.AndroidVersionOptions = ["LOLLIPOP5.0.0","LOLLIPOP5.1.1","MARSHMALLOW6.0.1"];
 
 //Selection Options Ends 

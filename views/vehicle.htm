@@ -25,6 +25,7 @@
          <td style="width:10%">Registration No.<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('registration_no')"></i></td>
          <td style="width:10%">6th Sense Unit<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_no')"></i></td>
           <td style="width:10%">Mobile Unit<i class="fa fa-caret-down pull-right" style="cursor: pointer;" ng-click="sort('vehicle_no')"></i></td>
+          <td style="width: 10%">Features</td>
          <td style="width:10%">Edit</td>
          <td style="width:10%">Delete</td>
 
@@ -36,6 +37,7 @@
         <td style="width:10%">{{v.registration_no}}</td>
         <td style="width:10%">{{v.ecu_unit.serial_no}}</td>
         <td style="width:10%">{{v.device_unit.serial_no}}</td>
+        <td><button class="btn btn-info" ng-click="getVehicleFeature(v._id)" data-toggle="modal" data-target="#vehichleFeature">Features</button></td>
          <td><button class="btn btn-success btn-outline" ng-click="getVehicleData(v._id);"  data-toggle="modal" data-target="#editVehicle" >Edit</button></td>
          <td><button class="btn btn-danger" data-toggle="modal" data-target="#confirm"  ng-click="setDeleteElementId(v._id);" >X</button></td>
         </tr>
@@ -223,6 +225,41 @@
 
  </div>
 </div>
+
+
+</div>
+
+<div class="modal-fade" role="dialog" id="vehichleFeature">
+  <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4 class="modal-title">Vehicle Features</h4>
+
+        </div>
+
+          <div class="modal-body">
+            
+
+
+
+
+
+
+
+
+
+
+              <div class="modal-footer">
+                  
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+
+          </div>
+
+
+      </div>
+  </div>
 
 
 </div>

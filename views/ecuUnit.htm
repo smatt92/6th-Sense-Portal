@@ -1,3 +1,5 @@
+
+
 <div class="panel">
    <div class="panel-heading">
      <button class="btn btn-default btn-xs pull-right" ng-click="getEcuType();"  data-toggle="modal" data-target="#addEcuUnit">Create</button>
@@ -93,13 +95,14 @@
 
             <div class="form-group">
             <label>Assembled On</label><span class="ast">*</span>
-            <input type="date" class="form-control datepicker" ng-model="manufacturedOn" placeholder="Manufactured on">
+            <md-datepicker ng-model="manufacturedOn" md-placeholder="Assembled on"></md-datepicker>
+            
             </div>
 
 
 
      <div class="modal-footer">
-      <button type="button" class="btn btn-danger" ng-click="CreateEcuUnit('ecuUnitForm')" >Save</button>
+      <button type="button" class="btn btn-danger" ng-click="CreateEcuUnit('ecuUnitForm')" >Save</button> 
        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
      </div>
             </form>
@@ -157,7 +160,7 @@
             </div>
 
             <div class="form-group">
-            <label>ECU Type</label>
+            <label>System Type</label>
               <select class="form-control" ng-model="EditecuType">
                 <option ng-repeat="e in ecuTypes" value="{{e._id}}">{{e.name}}</option>
               </select>
@@ -165,7 +168,8 @@
 
             <div class="form-group">
             <label>Assembled and Tested On</label>
-            <input type="date" class="form-control"   ng-model="EditmanufacturedOn" placeholder="Manufactured on">
+            <!-- <input type="date" class="form-control"   ng-model="EditmanufacturedOn" placeholder="Manufactured on"> -->
+             <md-datepicker ng-model="manufacturedOn" md-placeholder="Assembled on"></md-datepicker>
             </div>
 
 

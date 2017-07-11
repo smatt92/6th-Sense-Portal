@@ -1,9 +1,9 @@
 
 try{
 app.service('$constants',function(){
-    this.demoEndPoint = "http://ec2-13-126-217-60.ap-south-1.compute.amazonaws.com:3000";
+    this.demoEndPoint = "http://13.126.217.60:3000";
     this.devEndPoint = "http://ec2-52-66-111-29.ap-south-1.compute.amazonaws.com:3000";
-    this.endPointInUse = this.demoEndPoint;
+    this.endPointInUse = this.devEndPoint;
 });
 }
 catch(a){

@@ -122,6 +122,7 @@ console.log("ASd");
 $scope.next1 = function(form){
 
 $scope.clicked1=true;
+
 // if($scope.phoneNumber < 8 || $scope.phoneNumber >8){
 // angular.element("#phoneNumber").next().text("Phone Number should be of 8 digits only");
 // $scope[form]["phoneNumber"].$invalid= true;

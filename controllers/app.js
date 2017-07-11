@@ -1,4 +1,4 @@
-var app = angular.module("SixSense", ['ngRoute','ui.select', 'ngSanitize','mgo-angular-wizard', 'chart.js','angularUtils.directives.dirPagination']);
+var app = angular.module('SixSense', ['ngRoute','ui.select', 'ngSanitize','mgo-angular-wizard', 'chart.js','ngMaterial','angularUtils.directives.dirPagination']);
 var token = localStorage.getItem("sixthsense.token");
 
 
@@ -32,7 +32,7 @@ app.config(function($routeProvider) {
         controller : "deviceUnitctrl"
     })
     .when("/companyWizard",{
-        templateUrl : "views/companyRead.htm",
+        templateUrl : "views/companyRead.htm", //read
         controller: "companyWizardReadCtrl"
     })
     .when("/companyRead",{

@@ -28,6 +28,24 @@ var getVehicle = function(){
 }
 getVehicle();
 
+//vehicle feature
+$scope.getVehicleFeature=function(id){
+    
+var autho= localStorage.getItem("sixthsense.token");
+var auth="Bearer"+autho;
+var compId=localStorage.getItem("companyId")
+$http.get($constants.endPointInUse+"/api/companies/"+compId+"/vehicles/"+id+"/getFeatures",{headers:{'Content-Type':'application/json','Authorization': auth}})
+.then(function(response){
+$scope.vFeature=response.data;
+console.log($scope.vFeature);
+
+
+})
+
+}
+
+
+
 var getVehicleTypes = function(){
      var autho = localStorage.getItem("sixthsense.token");
      var auth = "Bearer "+autho;
@@ -125,7 +143,7 @@ $scope.deleteVehicle = function(vid){
 }
 
 $scope.getVehicleData = function(id){
-    var autho = localStorage.getItem("sixthsense.token");
+    var autho = localStorage.getItem("sixthsense.toke   n");
      var auth = "Bearer "+autho;
      var compId = localStorage.getItem("companyId");
      console.log(id);
@@ -183,6 +201,10 @@ $scope.numberofPages=function(){
 
 
 });
+
+// $scope.getVehicleFeature = function(vehicleId){
+//     alert(vehicleId);
+// }
 
 app.filter('startFrom', function() {
     return function(input, start) {

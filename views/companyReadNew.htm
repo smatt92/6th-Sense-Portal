@@ -1,16 +1,16 @@
-<div id="readPopup" class="main-content checkbo" style="min-height: 60vh">
+ n<div id="readPopup" class="main-content checkbo" style="min-height: 60vh">
     <form id="commentForm" class="form-horizontal" role="form">
         <div class="box-tab justified" id="rootwizard">
             <ul class="nav nav-tabs" style="background-color: #fff; ">
                 <li class="active"  ><a data-target="#tab1" data-toggle="tab" id="atab1">1. Company details</a>
                 </li>
-                <li ><a data-target="#tab2" data-toggle="tab" id="atab2" >2. Add Admin</a>
+                <li ><a data-target="#tab2" data-toggle="tab" id="atab2" >2. Admin</a>
                 </li>
-                <li ><a data-target="#tab3" data-toggle="tab"id="atab3" >3. Assign 6th Sense Units</a>
+                <li ><a data-target="#tab3" data-toggle="tab"id="atab3" >3. 6th Sense units</a>
                 </li>
-                <li ><a data-target="#tab4" data-toggle="tab"id="atab4" >4. Assign Mobile Units</a>
+                <li ><a data-target="#tab4" data-toggle="tab"id="atab4" >4. Mobile units</a>
                 </li>
-                <li ><a data-target="#tab5" data-toggle="tab"id="atab5" >5. Add Features</a>
+                <li ><a data-target="#tab5" data-toggle="tab"id="atab5" >5. Features</a>
                 </li>
             </ul>
 
@@ -94,7 +94,7 @@
                     </div>
 
                     <div class="panel-body">
-                        <table class="table table-bordered table-striped datatable editable-datatable responsive align-middle bordered">
+                        <table class="table table-bordered table-st n  riped datatable editable-datatable responsive align-middle bordered">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="tab-pane" id="tab3">
-                    <label>Please select 6th Sense Units</label>
+                    <label>Assigned 6th Sense units</label>
                     <ui-select multiple ng-model="ecuTypes.a" ng-disabled=true>
                         <ui-select-match>
                             {{$item.serial_no}}
@@ -130,7 +130,7 @@
                 </div>
 
                 <div class="tab-pane" id="tab4">
-                    <label>Please select Mobile Units</label>
+                    <label>Assigned Mobile units</label>
                     <ui-select multiple ng-model="deviceUnit.a" ng-disabled=true>
                         <ui-select-match>
                             {{$item.serial_no}}
